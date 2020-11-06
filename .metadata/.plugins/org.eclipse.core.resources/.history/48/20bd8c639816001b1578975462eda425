@@ -1,0 +1,68 @@
+package Poly;
+
+/**
+ * Represents dog
+ * @author meh
+ *
+ */
+
+public class Dog {
+	
+	//defione static vars
+	/**
+	 * Default name for the dog
+	 */
+	static String DEFAULT_NAME = "Generic dog";
+	
+	static double DEFAULT_AGE = 0.5;
+	
+	static double DEFAULT_WEIGHT = 1.75;
+	
+	static String DEFAULT_FOOD = "Geenric dog food";
+	
+	static String DEFAULT_BARK = "Bark!";
+	
+	static int DEFAULT_NUM_TIMES_BARK = 1;
+	
+	static final double WEIGHT_GAIN_INCREASE = 0.01;
+	
+	//instance vars
+	String name;
+	double age;
+	String owner;
+	double weight;
+	
+	//constructors
+	public Dog(String name, double age, String owner, double weight) {
+		this.name = name;
+		this.age = age;
+		this.owner = owner;
+		this.weight = weight;
+	}
+	
+	//overload another way to create dog
+	public Dog(String name, double age) {
+		this(name, age, null, Dog.DEFAULT_WEIGHT);
+	}
+	
+	//create dog from 2nd constructor. Overloading at work.
+	public Dog() {
+		this(Dog.DEFAULT_NAME, Dog.DEFAULT_WEIGHT);
+	}
+	
+	//Methods
+	/**
+	 * Eat method
+	 * @param args
+	 */
+	
+	public double eat (double amount, String food) {
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

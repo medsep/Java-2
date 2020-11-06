@@ -1,0 +1,15 @@
+
+public class Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String fruit = "banana";
+		char letter = fruit.charAt(0);
+		System.out.println(letter);
+		if (letter == 'b') {
+			System.out.println('?');
+		}
+
+	}
+
+}

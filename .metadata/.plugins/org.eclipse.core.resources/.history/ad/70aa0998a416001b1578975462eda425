@@ -1,0 +1,211 @@
+package Poly;
+
+/**
+ * Represents dog
+ * 
+ * @author meh
+ *
+ */
+
+public class Dog {
+
+	// defione static vars
+	/**
+	 * Default name for the dog
+	 */
+	static String DEFAULT_NAME = "Generic dog";
+
+	static double DEFAULT_AGE = 0.5;
+
+	static double DEFAULT_WEIGHT = 1.75;
+
+	static String DEFAULT_FOOD = "Geenric dog food";
+
+	static String DEFAULT_BARK = "Bark!";
+
+	static int DEFAULT_NUM_TIMES_BARK = 1;
+
+	static final double WEIGHT_GAIN_INCREASE = 0.01;
+
+	// instance vars
+	String name;
+	double age;
+	String owner;
+	double weight;
+
+	// constructors
+	public Dog(String name, double age, String owner, double weight) {
+		this.name = name;
+		this.age = age;
+		this.owner = owner;
+		this.weight = weight;
+	}
+
+	// overload another way to create dog
+	public Dog(String name, double age) {
+		this(name, age, null, Dog.DEFAULT_WEIGHT);
+	}
+
+	// create dog from 2nd constructor. Overloading at work.
+	public Dog() {
+		this(Dog.DEFAULT_NAME, Dog.DEFAULT_WEIGHT);
+	}
+
+	// Methods
+	/**
+	 * Eat method
+	 * 
+	 * @param args
+	 */
+
+	public double eat(double amount, String food) {
+		System.out.println(this.name + " is eating " + amount + " of " + food);
+
+		double weightGained = Dog.WEIGHT_GAIN_INCREASE * amount;
+		this.weight += weightGained;
+
+		return this.weight;
+	}
+
+	/**
+	 * Dog eats given amount of generic dog food and return new weight
+	 * 
+	 * @param amount
+	 * @return new weight
+	 */
+	public double eat(double amount) {
+		// calls first version of eat method
+		this.eat(amount, Dog.DEFAULT_FOOD);
+		return this.eat(amount, Dog.DEFAULT_FOOD);
+	}
+
+	/**
+	 * Dog eats given amount.Parses given amount
+	 * 
+	 * @param amount
+	 * @return
+	 */
+	public double eat(String amount) {
+		double returnVal = 0.0;
+
+		try {
+			// parse given amount as double
+			double amountAsDouble = Double.parseDouble(amount);
+			// call second version of eat method with amount as double
+			this.eat(amountAsDouble);
+			returnVal = this.eat(amountAsDouble);
+		} catch (NumberFormatException e) {
+			System.out.println(amount + ": can't be parsed as double.");
+		}
+		return returnVal;
+	}
+
+	/**
+	 * Dog makes a sound, given number of times.
+	 * 
+	 * @param numTimes  to bark
+	 * @param barkSound to make
+	 */
+	public void bark(int numTimes, String barkSound) {
+
+		// print dog's name
+		System.out.println(this.name + " says: ");
+
+		for (int i = 0; i < numTimes; i++) {
+			System.out.println(barkSound);
+		}
+		System.out.println();
+	}
+
+	/**
+	 * Dog makes a sound, given number of times.
+	 * 
+	 * @param numTimes  to bark
+	 * @param barkSound to make
+	 */
+	public void bark(String barkSound, int numTimes) {
+		// First bark sound with given number of times
+		this.bark(numTimes, barkSound);
+	}
+
+	/**
+	 * Dog makes generic bark default number of times.
+	 */
+	public void bark() {
+		// Call first bark method default number if times and default bark sound
+		this.bark(Dog.DEFAULT_NUM_TIMES_BARK, Dog.DEFAULT_BARK);
+	}
+
+	/**
+	 * Weight of the dog
+	 * 
+	 * @return
+	 */
+	public double getWeight() {
+		return this.weight;
+	}
+
+	/**
+	 * Set the name for the dog.
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * Set the dog's owner.
+	 * 
+	 * @param owner
+	 */
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	/***
+	 * Return spring representing this dog.
+	 */
+	public String toString() {
+		return this.name + ", " + this.weight + ", " + this.age + " " + this.owner;
+	}
+
+	public static void main(String[] args) {
+		// create dogs
+		Dog dog1 = new Dog("Princess", 12.7, "Mehdi", 3.7);
+		// 2nd constructor
+		Dog dog2 = new Dog("Fido", 5.5);
+		// 3rd constructor
+		Dog dog3 = new Dog();
+
+		System.out.println(dog1);
+		System.out.println(dog2);
+		System.out.println(dog3);
+
+		dog3.setName("Sam");
+		System.out.println(dog3);
+		System.out.println("\n");
+		// Call first eat method
+		System.out.println(dog1.eat(2.1, "Beneful"));
+		// Call second eat method
+		System.out.println(dog2.eat(1.1));
+		// Call third dog =widening
+		System.out.println(dog3.eat(1));
+		// call 3rd eat method
+		System.out.println(dog3.eat("12.3"));
+		// cant be parsed
+		System.out.println(dog3.eat("twelve"));
+		// dog weight should be the same
+		System.out.println(dog3.getWeight());
+
+		// call first bark method
+		// System.out.println(dog1);
+		dog1.bark(2, "Woof!");
+		// call 2nd bark method
+		dog1.bark("help", 3);
+		//call 3rd method
+		dog3.bark();
+
+	}
+
+}

@@ -1,0 +1,9 @@
+
+public class Dog {
+	public class Dog extends Animal {
+		@Override
+		public void greeting() {
+			System.out.println("I am a dog!");
+		}
+
+}

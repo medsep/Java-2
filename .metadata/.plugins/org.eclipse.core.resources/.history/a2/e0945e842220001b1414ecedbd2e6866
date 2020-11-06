@@ -1,0 +1,35 @@
+package Animal;
+
+/**
+ * Represents a dog and extends the Animal class
+ * 
+ * @author meh
+ *
+ */
+public class Dog extends Animal {
+
+	// instance vars
+
+	/**
+	 * Breed of the dog as well as those of Animal
+	 */
+	private String breed;
+
+	// constructor
+
+	/**
+	 * Creates a dof with the given age and greed.
+	 * 
+	 * @param age
+	 * @param breed
+	 */
+	public Dog(int age, String breed) {
+		// calls constructor in superclass Animal
+		super(age);
+
+		// sets breed of dog
+		this.breed = breed;
+
+	}
+
+}

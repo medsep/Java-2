@@ -1,0 +1,218 @@
+package hw7;
+
+public class Fraction {
+
+	int numerator;
+	int denominator;
+
+	// constructor
+	/**
+	 * Create fraction with a given numerator and denominator and formats the
+	 * negative fraction
+	 * 
+	 * @param numerator
+	 * @param denominator
+	 */
+
+	public Fraction(int numerator, int denominator) {
+		if (denominator == 0) {
+			throw new ArithmeticException("Divide by zero");
+		}
+		this.numerator = numerator;
+		this.denominator = denominator;
+
+		this.formatNegativeFraction();
+	}
+
+	/**
+	 * 10/-15-->-10/15
+	 */
+
+	void formatNegativeFraction() {
+		if (this.denominator < 0) {
+			this.denominator *= -1;
+			this.numerator *= -1;
+		}
+	}
+
+	public int gcd(int num1, int num2) {
+
+		// abs value
+		if (num1 < 0) {
+			num1 *= -1;
+		}
+		if (num2 < 0) {
+			num2 *= -1;
+		}
+
+		if (num1 == 0) {
+			return num2;
+		} else {
+			return gcd(num2, num1 % num2);
+		}
+	}
+
+	public void reduceToLowestForm() {
+
+		if (this.numerator == 0) {
+			this.numerator = 0;
+			this.denominator = 1;
+		} else if (this.numerator % this.denominator == 0) {
+			this.numerator = this.numerator / this.denominator;
+			this.denominator = 1;
+		} else {
+			ArrayList<Integer> divisorsNum = this.findDivisors(this.numerator);
+			ArrayList<Integer> divisorsDen = this.findDivisors(this.denominator);
+
+			int gcf = findGreatestCommonFactor(divisorsNum, divisorsDen);
+
+			this.numerator = this.numerator / gcf;
+			this.denominator = this.denominator / gcf;
+
+			this.formatNegativeFraction();
+		}
+	}
+
+
+	public Fraction add(Fraction otherFraction) {
+		// new
+		Fraction theNewFractions = new Fraction(numerator, denominator);
+		// numerator calculation
+		theNewFractions.numerator = this.numerator * otherFraction.denominator
+				+ this.denominator * otherFraction.numerator;
+		// denominator calculation
+		theNewFractions.denominator = this.denominator * otherFraction.denominator;
+		// The returned Fractions2 must be in reduced/lowest form.
+		theNewFractions.reduceToLowestForm();
+		// Returns a new Fractions2 that is the sum of the two Fractions2s.
+		return theNewFractions;
+	}
+
+	public Fraction subtract(Fraction otherFraction) {
+
+		Fraction theNewFraction = new Fraction(numerator, denominator);
+		theNewFraction.numerator = this.numerator * otherFraction.denominator
+				- this.denominator * otherFraction.numerator;
+		// denominator calculation
+		theNewFraction.denominator = this.denominator * otherFraction.denominator;
+		// The returned Fractions2 must be in reduced/lowest form.
+
+		theNewFraction.reduceToLowestForm();
+
+		return theNewFraction;
+	}
+
+	public Fraction mul(Fraction otherFraction) {
+
+		this.reduceToLowestForm();
+		otherFraction.reduceToLowestForm();
+
+		int prodNumerator = this.numerator * otherFraction.numerator;
+		int prodDenominator = this.denominator * otherFraction.denominator;
+
+		Fraction newFraction = new Fraction(prodNumerator, prodDenominator);
+		newFraction.reduceToLowestForm();
+		return newFraction;
+	}
+
+	public Fraction div(Fraction otherFraction) {
+
+		this.reduceToLowestForm();
+		otherFraction.reduceToLowestForm();
+
+		int otherNumerator = otherFraction.numerator;
+		int otherDenominator = otherFraction.denominator;
+		otherFraction.numerator = otherDenominator;
+		otherFraction.denominator = otherNumerator;
+
+		Fraction newFraction = this.mul(otherFraction);
+		newFraction.reduceToLowestForm();
+
+		return newFraction;
+	}
+
+	/***
+	 * return fraction to decimal
+	 * 
+	 * @return
+	 */
+	public double decimal() {
+		double doubleDenominator = (double) this.denominator;
+		return this.numerator / doubleDenominator;
+	}
+
+	public void sqr() {
+		Fraction otherFraction = new Fraction(this.numerator, this.denominator);
+		Fraction newFraction = this.mul(otherFraction);
+		this.numerator = newFraction.numerator;
+		this.denominator = newFraction.denominator;
+	}
+
+	public Fraction average(Fraction otherFraction) {
+
+		Fraction sumFractions = this.add(otherFraction);
+		Fraction twoFractions = new Fraction(2, 1);
+		Fraction divFraction = sumFractions.div(twoFractions);
+		return divFraction;
+	}
+
+	public static Fraction average(Fraction[] fractions) {
+
+		Fraction divFraction = new Fraction(0, 1);
+		int numFractions = fractions.length;
+		if (numFractions > 0) {
+			Fraction sumFractions = fractions[0];
+			for (int i = 1; i < numFractions; i++) {
+				sumFractions = sumFractions.add(fractions[i]);
+			}
+			Fraction lenFraction = new Fraction(numFractions, 1);
+			divFraction = sumFractions.div(lenFraction);
+			divFraction.reduceToLowestForm();
+		}
+		return divFraction;
+	}
+
+	public static Fraction average(int[] ints) {
+
+		Fraction divFraction = new Fraction(0, 1);
+		int numInts = ints.length;
+
+		if (numInts > 0) {
+			int sumInts = ints[0];
+			for (int i = 1; i < numInts; i++) {
+				sumInts += ints[i];
+			}
+			divFraction = new Fraction(sumInts, numInts);
+			divFraction.reduceToLowestForm();
+		}
+		return divFraction;
+	}
+
+	@Override
+	public boolean equals(Object object) {
+		// cast the Fractions1 type to the object
+		Fraction toTest = (Fraction) object;
+		// clone it to reduce
+		Fraction toTestClone = new Fraction(toTest.numerator, toTest.denominator);
+		// clone thisFractions1 to reduce
+		Fraction thisClone = new Fraction(this.numerator, this.denominator);
+		// reduce the cloned Fractions1s for comparison
+		toTestClone.reduceToLowestForm();
+		thisClone.reduceToLowestForm();
+
+		// if the numerators and the denominators are equal, return true
+		// else, return false as not equal
+		if (thisClone.numerator == toTestClone.numerator) {
+			if (thisClone.denominator == toTestClone.denominator) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public String toString() {
+
+		return this.numerator + "/" + this.denominator;
+	}
+}

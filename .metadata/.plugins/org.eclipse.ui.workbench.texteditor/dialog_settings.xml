@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="gcd"/>
+		<list key="findhistory">
+			<item value="gcd"/>
+			<item value="boolean"/>
+			<item value="Fractions"/>
+			<item value="Fractions2"/>
+			<item value="Fraction"/>
+			<item value="winnerCandidate"/>
+			<item value="smallestDifference"/>
+			<item value="howClose"/>
+			<item value="public class EnumHowTo { public enum Language{ JAVA(1), PYTHON(2), PERL(3), SCALA(4); private int rank; private Language(int rank){ this.rank = rank; } public int getRank(){ return rank; } }; public static void main(String args[]) { System.out.println(&quot;Java Enum Iterate Example using for loop&quot;); for(Language pl : Language.values()){ System.out.println( pl.name() + &quot; : &quot; + pl.rank); } } } Output: Java Enum Iterate Example using for loop JAVA : 1 PYTHON : 2 PERL : 3 SCALA : 4"/>
+			<item value="max2"/>
+			<item value="max3"/>
+			<item value="max1"/>
+			<item value="max4"/>
+			<item value="Card"/>
+		</list>
+		<list key="replacehistory">
+			<item value="Fraction"/>
+			<item value="Fractions"/>
+			<item value="Fractions2"/>
+			<item value="Fractions3"/>
+			<item value="Fractions1"/>
+			<item value="winner"/>
+			<item value="minDelta"/>
+			<item value="delta"/>
+			<item value="val2"/>
+			<item value="val3"/>
+			<item value="max"/>
+			<item value="min"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="888"/>
+		<item key="DIALOG_Y_ORIGIN" value="137"/>
+		<item key="DIALOG_WIDTH" value="284"/>
+		<item key="DIALOG_HEIGHT" value="391"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+</section>

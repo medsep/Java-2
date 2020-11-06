@@ -1,0 +1,273 @@
+package hw7;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+class FractionTest {
+
+	double delta;
+
+	@BeforeEach
+	public void setUp() {
+		this.delta = 0.000001;
+	}
+
+	@Test
+	void testFractions() {
+
+		Fraction Fraction = new Fraction(4, 16);
+		assertEquals(4, Fraction.numerator);
+		assertEquals(16, Fraction.denominator);
+
+		Fraction = new Fraction(4, -16);
+		assertEquals(-4, Fraction.numerator);
+		assertEquals(16, Fraction.denominator);
+
+		Fraction = new Fraction(-35, 60);
+		assertNotEquals(35, Fraction.numerator);
+		assertNotEquals(35, Fraction.denominator);
+		assertEquals(-35, Fraction.numerator);
+		assertEquals(60, Fraction.denominator);
+
+		Fraction = new Fraction(-35, -60);
+		assertNotEquals(-35, Fraction.numerator);
+		assertNotEquals(-35, Fraction.denominator);
+		assertEquals(35, Fraction.numerator);
+		assertEquals(60, Fraction.denominator);
+
+	}
+
+	@Test
+	void testReduceToLowestForm() {
+		Fraction Fraction = new Fraction(4, 16);
+		Fraction.reduceToLowestForm();
+
+		assertEquals(1, Fraction.numerator);
+		assertEquals(4, Fraction.denominator);
+
+		Fraction = new Fraction(0, 4);
+		Fraction.reduceToLowestForm();
+
+		assertEquals(0, Fraction.numerator);
+		assertEquals(1, Fraction.denominator);
+
+		Fraction = new Fraction(-25, -100);
+		Fraction.reduceToLowestForm();
+		assertEquals(1, Fraction.numerator);
+		assertEquals(4, Fraction.denominator);
+		assertNotEquals(25, Fraction.numerator);
+		assertNotEquals(100, Fraction.denominator);
+
+	}
+
+	@Test
+	void testAdd() {
+		Fraction Fraction1 = new Fraction(4, 16);
+		Fraction Fraction2 = new Fraction(5, 16);
+		Fraction newFraction = Fraction1.add(Fraction2);
+		assertEquals(9, newFraction.numerator);
+		assertEquals(16, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+
+		Fraction1 = new Fraction(3, 7);
+		Fraction2 = new Fraction(2, 7);
+		newFraction = Fraction1.add(Fraction2);
+		assertEquals(5, newFraction.numerator);
+		assertEquals(7, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+
+		// Here we test with unfactored numbers, in both
+		// denominator and numerator.
+		Fraction1 = new Fraction(10, 50);
+		Fraction2 = new Fraction(20, 50);
+		newFraction = Fraction1.add(Fraction2);
+		assertEquals(3, newFraction.numerator);
+		assertEquals(5, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+		assertNotEquals(30, newFraction.numerator);
+		assertNotEquals(50, newFraction.denominator);
+
+		// Here we test with negative numbers, in both
+		// numerator.
+		Fraction1 = new Fraction(10, 50);
+		Fraction2 = new Fraction(-20, 50);
+		newFraction = Fraction1.add(Fraction2);
+		assertEquals(-1, newFraction.numerator);
+		assertEquals(5, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+		assertNotEquals(30, newFraction.numerator);
+		assertNotEquals(50, newFraction.denominator);
+
+		// Here we test with negative numbers, in both
+		// denominator and numerator.
+		Fraction1 = new Fraction(10, -50);
+		Fraction2 = new Fraction(-20, 50);
+		newFraction = Fraction1.add(Fraction2);
+		assertEquals(-3, newFraction.numerator);
+		assertEquals(5, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+		assertNotEquals(30, newFraction.numerator);
+		assertNotEquals(-50, newFraction.denominator);
+
+	}
+
+	@Test
+	void testSubtract() {
+
+		Fraction Fraction1 = new Fraction(4, 16);
+		Fraction Fraction2 = new Fraction(5, 16);
+		Fraction newFraction = Fraction1.subtract(Fraction2);
+		assertEquals(-1, newFraction.numerator);
+		assertEquals(16, newFraction.denominator);
+
+		Fraction1 = new Fraction(5, 9);
+		Fraction2 = new Fraction(3, 9);
+		newFraction = Fraction1.subtract(Fraction2);
+		assertEquals(2, newFraction.numerator);
+		assertEquals(9, newFraction.denominator);
+		
+		Fraction1 = new Fraction(-5, 100);
+		Fraction2 = new Fraction(3, 50);
+		newFraction = Fraction1.subtract(Fraction2);
+		assertEquals(-11, newFraction.numerator);
+		assertEquals(100, newFraction.denominator);
+		assertNotSame(newFraction, Fraction1);
+		assertNotSame(newFraction, Fraction2);
+		assertNotEquals(-8, newFraction.numerator);
+		assertNotEquals(100, newFraction.denominator);
+		
+
+	}
+
+	@Test
+	void testMul() {
+
+		Fraction Fraction1 = new Fraction(4, 16);
+		Fraction Fraction2 = new Fraction(5, 16);
+		Fraction newFraction = Fraction1.mul(Fraction2);
+		assertEquals(5, newFraction.numerator);
+		assertEquals(64, newFraction.denominator);
+
+		Fraction1 = new Fraction(5, 9);
+		Fraction2 = new Fraction(3, 9);
+		newFraction = Fraction1.mul(Fraction2);
+		assertEquals(5, newFraction.numerator);
+		assertEquals(27, newFraction.denominator);
+
+	}
+
+	@Test
+	void testDiv() {
+		Fraction Fraction1 = new Fraction(4, 16);
+		Fraction Fraction2 = new Fraction(5, 16);
+		Fraction newFraction = Fraction1.div(Fraction2);
+		assertEquals(4, newFraction.numerator);
+		assertEquals(5, newFraction.denominator);
+
+		Fraction1 = new Fraction(5, 9);
+		Fraction2 = new Fraction(3, 9);
+		newFraction = Fraction1.div(Fraction2);
+		assertEquals(5, newFraction.numerator);
+		assertEquals(3, newFraction.denominator);
+
+	}
+
+	@Test
+	void testDecimal() {
+		Fraction Fraction1 = new Fraction(4, 16);
+		double dec = Fraction1.decimal();
+		assertEquals(.25, dec, this.delta);
+
+		Fraction1 = new Fraction(5, 16);
+		dec = Fraction1.decimal();
+		assertEquals(.3125, dec, this.delta);
+
+	}
+
+	@Test
+	void testSqr() {
+		Fraction Fraction1 = new Fraction(2, 3);
+		Fraction1.sqr();
+		assertEquals(4, Fraction1.numerator);
+		assertEquals(9, Fraction1.denominator);
+
+		Fraction1 = new Fraction(4, 16);
+		Fraction1.sqr();
+		assertEquals(1, Fraction1.numerator);
+		assertEquals(16, Fraction1.denominator);
+
+	}
+
+	@Test
+	void testEquals() {
+		Fraction Fraction1 = new Fraction(2, 3);
+		Fraction Fraction2 = new Fraction(2, 3);
+		assertEquals(Fraction1, Fraction2);
+
+		Fraction1 = new Fraction(4, 16);
+		Fraction2 = new Fraction(1, 4);
+		assertEquals(Fraction1, Fraction2);
+
+		// confirm the Fractions were not (permanently) reduced to lowest form
+		assertEquals(4, Fraction1.numerator);
+		assertEquals(16, Fraction1.denominator);
+		assertEquals(1, Fraction2.numerator);
+		assertEquals(4, Fraction2.denominator);
+
+	}
+
+	@Test
+	void testToString() {
+		Fraction Fraction1 = new Fraction(2, 3);
+		String str = Fraction1.toString();
+		assertEquals("2/3", str);
+
+	}
+
+	@Test
+	void testAverageFraction() {
+		Fraction Fraction1 = new Fraction(1, 2);
+		Fraction otherFraction = new Fraction(3, 4);
+		Fraction avgFraction = Fraction1.average(otherFraction);
+
+		assertEquals(5, avgFraction.numerator);
+		assertEquals(8, avgFraction.denominator);
+
+	}
+
+	@Test
+	void testAverageFractionArray() {
+
+		Fraction Fraction1 = new Fraction(3, 4);
+		Fraction Fraction2 = new Fraction(3, 5);
+		Fraction Fraction3 = new Fraction(3, 6);
+
+		Fraction[] Fractions = new Fraction[] { Fraction1, Fraction2, Fraction3 };
+		Fraction avgFraction = Fraction.average(Fractions);
+
+		assertEquals(37, avgFraction.numerator);
+		assertEquals(60, avgFraction.denominator);
+
+	}
+
+	@Test
+	void testAverageIntArray() {
+
+		int[] ints = new int[] { 1, 2, 3, 4 };
+		Fraction avgFraction = Fraction.average(ints);
+
+		assertEquals(5, avgFraction.numerator);
+		assertEquals(2, avgFraction.denominator);
+
+	}
+
+}

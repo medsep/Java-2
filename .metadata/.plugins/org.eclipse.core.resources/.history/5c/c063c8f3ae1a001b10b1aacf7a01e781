@@ -1,0 +1,19 @@
+import java.awt.Point;
+
+public class Objects {
+	
+	public static void printPoint(Point p) {
+		System.out.println("(" + p.x + ", " + p.y + ")");
+		}
+
+
+	public static void main(String[] args) {
+
+		Point blank;
+		blank = new Point(3, 4);
+		System.out.println(blank);
+		printPoint(blank);
+
+	}
+
+}

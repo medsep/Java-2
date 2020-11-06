@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+
+/*
+ * Represents a classroom with students
+ * Each class has list of students
+ * and an array that represents seats in classroom
+ */
+public class Classroom {
+	
+	//instance variables
+	/**
+	 * Building name
+	 */
+	String buildingName;
+	
+	/**
+	 * Name of classroom
+	 * @param args
+	 */
+	String roomName;
+	
+	/*
+	 * list of students
+	 */
+	
+	ArrayList<Student> students;
+	
+	/*
+	 * seats of class room. 2d array
+	 */
+	Seat[][] seats;
+	
+	//constructor
+	public Classroom(String buildingName, String roomName, int rows, int columns) {
+
+		//set building name
+		this.buildingName =  buildingName;
+		//set room name
+		this.roomName = roomName;
+		
+		//initlalize seats array
+		this.seats = new Seat[rows][columns];
+		
+		//populate arrays by interation
+		for (int i = 0; i< rows; i++) {
+			
+			//iterate over columns
+			for (int j=0; j<columns; j++){
+				//give each location own instance of seat class
+				seats[i][j]= new Seat();
+			}
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

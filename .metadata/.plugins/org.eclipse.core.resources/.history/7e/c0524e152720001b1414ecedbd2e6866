@@ -1,0 +1,62 @@
+package Animal;
+
+import java.util.ArrayList;
+
+/**
+ * Class fro managing animals
+ * 
+ * @author meh
+ *
+ */
+public class AnimalsManager {
+
+	// instance vars
+
+	/**
+	 * List of all animals
+	 */
+	ArrayList<Animal> animals;
+
+	// constructor
+
+	/**
+	 * Creates AnimalsManger and initializes list of all animals.
+	 */
+	public AnimalsManager() {
+		// initializes animals ArrayList
+		this.animals = new ArrayList<Animal>();
+
+	}
+
+	// methods
+
+	/**
+	 * print list if animals
+	 */
+	public void printAnimals() {
+		// iterate over and print
+		// enhanced for loop
+		for (Animal a : this.animals) {
+			// this will call toString method in the respective animal class
+			// toString in Animal class or overridden toString in subclass of animal
+			System.out.println(a);
+		}
+	}
+
+	/**
+	 * Tells all animal to speak
+	 */
+	public void animalsSpeak() {
+		for (Animal a : this.animals) {
+			// this will call toString method in the respective animal class
+			// toString in Animal class or overridden toString in subclass of animal
+			a.speak();
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,58 @@
+import java.util.Random;
+
+public class Arrays {
+
+	int[] counts = new int[4];
+	// double[] values = new double[size];
+
+	public static void printArray(int[] a) {
+		System.out.print("{" + a[0]);
+		for (int i = 1; i < a.length; i++) {
+			System.out.print(", " + a[i]);
+		}
+		System.out.println("}");
+	}
+
+	public static int[] randomArray(int size) {
+		Random random = new Random();
+		int[] a = new int[size];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = random.nextInt(100);
+		}
+		return a;
+	}
+
+	public static int search(double[] a, double target) {
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == target) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public static double sum(double[] a) {
+		double total = 0.0;
+		for (int i = 0; i < a.length; i++) {
+			total += a[i];
+		}
+		return total;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// int[] a = { 1, 2, 3, 4 };
+		// System.out.println(a);
+		// printArray();
+		int numValues = 8;
+		int[] array = randomArray(numValues);
+		printArray(array);
+		int[] a = { 1, 2, 3, 4 };
+		printArray(a);
+		double[] k = { 2.2, 3.3, 6, 8.6, 9.6, 5.5 };
+		System.out.println(sum(k));
+		System.out.println(search(k, 9.6));
+
+	}
+
+}

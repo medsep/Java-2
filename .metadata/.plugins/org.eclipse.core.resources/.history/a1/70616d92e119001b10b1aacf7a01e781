@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Test {
+
+		public static void main(String[] args) {
+			
+			int inch;
+			double cm;
+			Scanner in = new Scanner(System.in);
+			//prompt user input 
+			System.out.print("How many inches? ");
+			inch = in.nextInt();
+			//conversion
+			cm = inch * 2.54;
+			System.out.print(inch + " in = ");
+			System.out.println(cm + " cm");
+			
+			
+
+		}
+	}

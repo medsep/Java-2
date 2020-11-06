@@ -1,0 +1,13 @@
+import java.awt.Point;
+
+public class Objects {
+
+	public static void main(String[] args) {
+
+		Point blank;
+		blank = new Point(3, 4);
+		System.out.println(blank);
+		
+	}
+
+}

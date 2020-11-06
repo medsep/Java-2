@@ -1,0 +1,47 @@
+/**
+ * represent customer with name id geography
+ */
+
+package Week9;
+
+import java.util.ArrayList;
+
+public class Customer {
+	//Static varaible shared across all instances of customer
+	
+	//copmany for all the customer
+	static final String COMPANY = "CVS";
+	
+	//Aarray list to store all customers
+	static ArrayList<Customer> CUSTOMERS = new ArrayList<Customer>();
+	
+	//To generate count of customers
+	//all static variable in UpperCase
+	static Counter COUNTER;
+	
+	//instance variables
+	
+	/**
+	 * Name of cusomer
+	 * @param args
+	 */
+	String name;
+	
+	/**
+	 * Geography
+	 * @param args
+	 */
+	String geography;
+	
+	/**
+	 * ID of customer
+	 * @param args
+	 */
+	int ID;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

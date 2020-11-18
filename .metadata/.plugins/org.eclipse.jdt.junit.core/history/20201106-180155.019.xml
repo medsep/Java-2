@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="FractionTest (2)" project="W10Fractions" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="FractionTest" time="0.048" uniqueid="[engine:junit-jupiter]/[class:FractionTest]">
-    <testcase name="testEqualsObject" classname="FractionTest" time="0.048" displayname="testEqualsObject()" uniqueid="[engine:junit-jupiter]/[class:FractionTest]/[method:testEqualsObject()]"/>
-  </testsuite>
-</testrun>

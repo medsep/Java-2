@@ -12,6 +12,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W11\Practice-Coding-13_CIT-591b\transportation"/>
 			<item value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W7\HW6_Simple-21"/>
 		</list>
 	</section>

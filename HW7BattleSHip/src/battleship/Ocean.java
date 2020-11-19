@@ -30,7 +30,7 @@ public class Ocean {
 	 */
 	private int hitCount;
 
-	private int shipSunk;
+	private int shipsSunk;
 
 	/**
 	 * Constructor
@@ -40,7 +40,7 @@ public class Ocean {
 
 		this.shotsFired = 0;
 		this.hitCount = 0;
-		this.shipSunk = 0;
+		this.shipsSunk = 0;
 	}
 
 	/**
@@ -70,10 +70,29 @@ public class Ocean {
 
 	/**
 	 * Returns array of ships.
+	 * 
 	 * @return
 	 */
-	Ship[][] getShipArray(){
-		return.this.ships;
+	Ship[][] getShipArray() {
+		return this.ships;
+	}
+
+	/**
+	 * Return number of shots fired in the game
+	 * 
+	 * @return
+	 */
+	int getShotsFired() {
+		return this.shotsFired;
+	}
+
+	/**
+	 * Return number of hits
+	 * 
+	 * @return
+	 */
+	int getHitCount() {
+		return this.hitCount;
 	}
 
 	void placeAllShipsRandomly() {
@@ -163,6 +182,7 @@ public class Ocean {
 	 */
 	boolean shootAt(int row, int column) {
 		// row column out of bounds
+		boolean returnVal = false;
 		if ((row < 0 || row >= Ocean.OCEAN_SIZE) || (column < 0 || column >= Ocean.OCEAN_SIZE)) {
 			return returnVal;
 		}
@@ -179,7 +199,7 @@ public class Ocean {
 
 				// check again, if it is sunk
 				if (ship.isSunk()) {
-					this.shipSunk++;
+					this.shipsSunk++;
 				}
 			}
 			// if it is an actual ship
@@ -198,21 +218,61 @@ public class Ocean {
 	 * Prints the ocean.
 	 */
 	void print() {
-		// top left corner
-		System.out.print("  ");
 
-		// print columns nums
-		for (int i = 0; this.ships.length; i++) {
+		System.out.println("  0 1 2 3 4 5 6 7 8 9");
+		for (int i = 0; i <= 9; i++) {
+
 			System.out.print(i + " ");
-		}
-		System.out.println("");
+			for (int j = 0; j <= 9; j++) {
+				Ship ship = ships[i][j];
+				String stringOfStatus = "? ";
+				if (ship.getShipType() == "empty") {
+					boolean checkHit = ship.getHit()[0];
+					if (checkHit) {
+						// Return "-" if the spot is fired but nothing is found.
+						stringOfStatus = ship.toString();
+					} else {
+						stringOfStatus = ". ";
+					}
+				} else {
+					int bowColumn = ship.getBowColumn();
+					int bowRow = ship.getBowRow();
+					int position;
+					if (ship.isHorizontal()) {
+						position = bowColumn - j;
+					} else {
+						position = bowRow - i;
+					}
 
-		// print row nums
-		Ship ship;
-		for (int i = 0; i < this.shipSunk.length; i++) {
-			System.out.print(i + " ");
+					if (ship.getHit()[position] == true) {
+						// Return "x" or "s" depending on if the ship is sunk.
+						stringOfStatus = ship.toString();
+					} else {
+						stringOfStatus = ". ";
+					}
+				}
+				System.out.print(stringOfStatus);
+				if (j == 9)
+					System.out.print("\n");
+			}
 		}
-		System.out.println("");
-
 	}
 }
+
+//void print() {
+// top left corner
+// System.out.print(" ");
+
+// print columns nums
+// for (int i = 0; i < this.ships.length; i++) {
+// System.out.print(i + " ");
+// }
+// System.out.println("");
+
+// print row nums
+// Ship ship;
+// for (int i = 0; i < this.ships.length; i++) {
+// System.out.print(i + " ");
+// }
+//	System.out.println("");
+//}

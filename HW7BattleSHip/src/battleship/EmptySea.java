@@ -9,11 +9,13 @@ public class EmptySea extends Ship {
 		super(EmptySea.SHIP_LENGTH);
 	}
 
+	@Override
 	boolean shootAt(int row, int column) {
 		super.shootAt(row, column);
 		return false;
 	}
 
+	@Override
 	boolean isSunk() {
 		return false;
 	}

@@ -62,7 +62,7 @@ public class BattleshipGame {
 
 					System.out.println("Enter row, column: ");
 					String rowColPair = scanner.nextLine();
-					String[] rowColPairArray = rowColPair.split(", ");
+					String[] rowColPairArray = rowColPair.split(",");
 
 					strrow = rowColPairArray[0].trim();
 					strcolumn = rowColPairArray[0].trim();
@@ -73,6 +73,7 @@ public class BattleshipGame {
 					try {
 						row = Integer.parseInt(strrow);
 						column = Integer.parseInt(strcolumn);
+						// boolean shootSuccess = ocean.shootAt(row, column);
 						if (row > 9 || row < 0) {
 							System.out.println("please input the row index between 0-9!");
 						} else if (column > 9 || column < 0) {

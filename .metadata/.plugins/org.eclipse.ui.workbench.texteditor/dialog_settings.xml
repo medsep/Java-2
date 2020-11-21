@@ -6,8 +6,16 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="gcd"/>
+		<item key="selection" value="getShotsFired"/>
 		<list key="findhistory">
+			<item value="getShotsFired"/>
+			<item value="setColumnRow"/>
+			<item value="setBowColumn"/>
+			<item value="isSunk"/>
+			<item value="shootAt"/>
+			<item value="shipSunk"/>
+			<item value="getShipSunk"/>
+			<item value="getShip"/>
 			<item value="gcd"/>
 			<item value="boolean"/>
 			<item value="Fractions"/>
@@ -15,13 +23,6 @@
 			<item value="Fraction"/>
 			<item value="winnerCandidate"/>
 			<item value="smallestDifference"/>
-			<item value="howClose"/>
-			<item value="public class EnumHowTo { public enum Language{ JAVA(1), PYTHON(2), PERL(3), SCALA(4); private int rank; private Language(int rank){ this.rank = rank; } public int getRank(){ return rank; } }; public static void main(String args[]) { System.out.println(&quot;Java Enum Iterate Example using for loop&quot;); for(Language pl : Language.values()){ System.out.println( pl.name() + &quot; : &quot; + pl.rank); } } } Output: Java Enum Iterate Example using for loop JAVA : 1 PYTHON : 2 PERL : 3 SCALA : 4"/>
-			<item value="max2"/>
-			<item value="max3"/>
-			<item value="max1"/>
-			<item value="max4"/>
-			<item value="Card"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Fraction"/>

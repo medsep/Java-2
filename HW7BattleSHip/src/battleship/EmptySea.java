@@ -13,6 +13,8 @@ public class EmptySea extends Ship {
 	boolean shootAt(int row, int column) {
 		super.shootAt(row, column);
 		return false;
+		// this.getHit()[0] = true;
+		// return false;
 	}
 
 	@Override
@@ -22,7 +24,7 @@ public class EmptySea extends Ship {
 
 	@Override
 	public String toString() {
-		return "-";
+		return "- ";
 	}
 
 	/**

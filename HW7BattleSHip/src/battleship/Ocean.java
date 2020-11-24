@@ -3,283 +3,282 @@ package battleship;
 import java.util.Random;
 
 /**
- * The class represents an ocean, including methods that place ships, shooting,
- * etc. This contains a 10*10 array of Ships, representing an "ocean", and some
- * methods to manipulate it.
- * 
- * @author Xueqi Wang, Weijie Qi
- *
+ * Class of the 10X10 ocean
  */
 public class Ocean {
-	// instance variables
 
 	/**
-	 * "ships" is used to quickly determine which ship is in any given location.
+	 * size of ocean and number of ships in the fleet
 	 */
-	private Ship[][] ships = new Ship[10][10];
+	static final int OCEAN_SIZE = 10;
+
+	/** Used to quickly determine which ship is in any given location */
+	private Ship[][] ships = new Ship[OCEAN_SIZE][OCEAN_SIZE];
 
 	/**
-	 * "shotsFired" is the total number of shots fired by the user.
+	 * Number of ships in each fleet
 	 */
+
+	static final int NUM_BATTLESHIPS = 1;
+	static final int NUM_CRUISERS = 2;
+	static final int NUM_DESTROYERS = 3;
+	static final int NUM_SUBMARINES = 4;
+
+	/** The total number of shots fired by the user */
 	private int shotsFired;
 
 	/**
-	 * "hitCount" is the number of times a shot hit a ship.
+	 * The number of times a shot hit a ship. If the user shoots the same part of a
+	 * ship more than once, every hit is counted, even though additional hits do the
+	 * user any good.
 	 */
 	private int hitCount;
 
-	/**
-	 * "shipsSunk" is the number of ships sunk.
-	 */
+	/** The number of ships sunk (10 ships in all) */
 	private int shipsSunk;
 
 	/**
-	 * "map" is a String array which is used for printing.
-	 */
-	public String[][] map = new String[10][10];
-
-	/**
-	 * The constructor initializes an empty sea and initialize the counters.
+	 * Creates an ocean initializes any game variables, such as how many shots have
+	 * been fired.
 	 */
 	public Ocean() {
-		// fill the ships array with "emptysea"
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				this.ships[i][j] = new EmptySea();
-			}
-		}
 
-		// set the empty sea
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
-				this.ships[i][j].placeShipAt(i, j, true, this);
-				// initialize the printed map
-				map[i][j] = ". ";
-			}
-		}
-
-		// initialize variables
+		this.populateEmptyOcean();
 		this.shotsFired = 0;
 		this.hitCount = 0;
 		this.shipsSunk = 0;
+
 	}
 
-	// methods
 	/**
-	 * This method places all ten ships randomly on the ocean.
+	 * randomly places ships
+	 */
+	private void populateEmptyOcean() {
+		for (int i = 0; i < this.ships.length; i++) {
+			for (int j = 0; j < this.ships[i].length; j++) {
+				Ship ship = new EmptySea();
+				ship.placeShipAt(i, j, true, this);
+			}
+		}
+	}
+
+	/**
+	 * Place all ten ships randomly on the (initially empty) ocean. Place larger
+	 * ships before smaller ones,
 	 */
 	void placeAllShipsRandomly() {
 
-		Random r = new Random();
-
-		int row = r.nextInt(10); // get a random number [0,10)
-		int column = r.nextInt(10);
-		boolean horizontal = r.nextBoolean(); // get a random boolean
-
-		// place 1 battleship
-		Ship battleship = new Battleship();
-		// get valid coordinates and horizontal
-		while (battleship.okToPlaceShipAt(row, column, horizontal, this) == false) {
-			row = r.nextInt(10);
-			column = r.nextInt(10);
-			horizontal = r.nextBoolean();
-		}
-		battleship.placeShipAt(row, column, horizontal, this);
-
-		// place 2 cruisers
-		for (int i = 0; i < 2; i++) {
-			row = r.nextInt(10);
-			column = r.nextInt(10);
-			horizontal = r.nextBoolean();
-
-			Ship cruiser = new Cruiser();
-			// get valid coordinates and horizontal
-			while (cruiser.okToPlaceShipAt(row, column, horizontal, this) == false) {
-				row = r.nextInt(10);
-				column = r.nextInt(10);
-				horizontal = r.nextBoolean();
+		Random random = new Random();
+		// place battleship
+		boolean horizontal = random.nextInt(2) == 0 ? true : false;
+		int row = random.nextInt(10);
+		int column = random.nextInt(10);
+		Battleship battleship = new Battleship();
+		while (true) {
+			if (battleship.okToPlaceShipAt(row, column, horizontal, this) == true) {
+				battleship.placeShipAt(row, column, horizontal, this);
+				// System.out.println("battleship placed");
+				break;
 			}
-			cruiser.placeShipAt(row, column, horizontal, this);
+			row = random.nextInt(10);
+			column = random.nextInt(10);
 		}
-
-		// place 3 destroyers
-		for (int i = 0; i < 3; i++) {
-			row = r.nextInt(10);
-			column = r.nextInt(10);
-			horizontal = r.nextBoolean();
-
-			Ship destroyer = new Destroyer();
-			// get valid coordinates and horizontal
-			while (destroyer.okToPlaceShipAt(row, column, horizontal, this) == false) {
-				row = r.nextInt(10);
-				column = r.nextInt(10);
-				horizontal = r.nextBoolean();
+		// place cruiser
+		for (int i = 2; i > 0; i--) {
+			boolean horizontal1 = random.nextInt(2) == 0 ? true : false;
+			int row1 = random.nextInt(10);
+			int column1 = random.nextInt(10);
+			Cruiser cruiser = new Cruiser();
+			while (true) {
+				if (cruiser.okToPlaceShipAt(row1, column1, horizontal1, this) == true) {
+					cruiser.placeShipAt(row1, column1, horizontal1, this);
+					// System.out.println("cruiser placed");
+					break;
+				}
+				row1 = random.nextInt(10);
+				column1 = random.nextInt(10);
 			}
-			destroyer.placeShipAt(row, column, horizontal, this);
 		}
-
-		// place 4 submarines
-		for (int i = 0; i < 4; i++) {
-			row = r.nextInt(10);
-			column = r.nextInt(10);
-			horizontal = r.nextBoolean();
-
-			Ship submarine = new Submarine();
-			// get valid coordinates and horizontal
-			while (submarine.okToPlaceShipAt(row, column, horizontal, this) == false) {
-				row = r.nextInt(10);
-				column = r.nextInt(10);
-				horizontal = r.nextBoolean();
+		// place destroyer
+		for (int i = 3; i > 0; i--) {
+			boolean horizontal2 = random.nextInt(2) == 0 ? true : false;
+			int row2 = random.nextInt(10);
+			int column2 = random.nextInt(10);
+			Destroyer destroyer = new Destroyer();
+			while (true) {
+				if (destroyer.okToPlaceShipAt(row2, column2, horizontal2, this) == true) {
+					destroyer.placeShipAt(row2, column2, horizontal2, this);
+					// System.out.println("destroyer placed");
+					break;
+				}
+				row2 = random.nextInt(10);
+				column2 = random.nextInt(10);
 			}
-			submarine.placeShipAt(row, column, horizontal, this);
+		}
+		// place submarine
+		for (int i = 4; i > 0; i--) {
+			boolean horizontal3 = random.nextInt(2) == 0 ? true : false;
+			int row3 = random.nextInt(10);
+			int column3 = random.nextInt(10);
+			Submarine submarine = new Submarine();
+			while (true) {
+				if (submarine.okToPlaceShipAt(row3, column3, horizontal3, this) == true) {
+					submarine.placeShipAt(row3, column3, horizontal3, this);
+					// System.out.println("submarine placed");
+					break;
+				}
+				row3 = random.nextInt(10);
+				column3 = random.nextInt(10);
+			}
 		}
 	}
 
 	/**
-	 * Returns true if the given location contains a ship, false if it does not
+	 * Returns true if the given location contains a real ship, still afloat,false
+	 * if it does not. In addition, this method updates the number of shots that
+	 * have been fired, and the number of hits.
 	 * 
 	 * @param row
 	 * @param column
-	 * @return true if the given location contains a ship, otherwise false.
+	 * @return True if there is a ship
 	 */
 	boolean isOccupied(int row, int column) {
-		boolean occupied = false;
-		String type = ships[row][column].getShipType();
-		if (type == "battleship" || type == "cruiser" || type == "destroyer" || type == "submarine")
-			occupied = true;
 
-		return occupied;
-	}
-
-	/**
-	 * If the part of the ship occupies the given (row, column), and not sunk, mark
-	 * "hit"
-	 * 
-	 * @param row
-	 * @param column
-	 * @return true/false
-	 */
-	boolean shootAt(int row, int column) {
-		// increase shots fired
-		this.shotsFired += 1;
-
-		// find the corresponding ship
 		Ship ship = this.getShipArray()[row][column];
-
-		// check the type of the ship
-		// shoot empty sea
-		if (ship.getShipType() == "empty") {
-			ship.shootAt(row, column);
-			// update the map
-			map[row][column] = ship.toString() + " ";
-			System.out.println("You missed.");
+		String shipType = ship.getShipType();
+		if (shipType != "empty") {
+			// Return true if there is a real ship
+			return true;
+		} else {
 			return false;
 		}
-		// shoot a real ship
-		else {
-			// the ship has not been sunk
-			if (ship.isSunk() == false) {
-				// increase hit count
-				this.hitCount += 1;
-				System.out.println("You hit a ship.");
-				// shoot the ship
-				ship.shootAt(row, column);
-				// check whether the ship has been sunk
-				if (ship.isSunk() == true) {
-					this.shipsSunk += 1;
-					// print the message
-					System.out.println("You just sank a ship - " + ship.getShipType() + ".");
-					// update the map of the rest of the ship
-					if (ship.isHorizontal() == true) {
-						for (int i = 0; i < ship.getLength(); i++)
-							map[ship.getBowRow()][ship.getBowColumn() - i] = ship.toString() + " ";
-					} else {
-						for (int i = 0; i < ship.getLength(); i++)
-							map[ship.getBowRow() - i][ship.getBowColumn()] = ship.toString() + " ";
-					}
-				}
-				// update the map
-				map[row][column] = ship.toString() + " ";
-				return true;
-			}
-			// return false if the ship has been sunk
-			else {
-				// update the map
-				map[row][column] = ship.toString() + " ";
-				System.out.println("You shot the sunk ship.(miss the shot)");
-				return false;
-			}
-		}
 	}
 
 	/**
-	 * the method gets the the number of shots fired by the user
+	 * Get shots you have fired.
 	 * 
-	 * @return the number of shots fired
+	 * @return the number of shots fired (in the game)
 	 */
 	int getShotsFired() {
 		return this.shotsFired;
 	}
 
 	/**
-	 * this method returns the number of times a shot hit a ship.
+	 * Get hits you already hit.
 	 * 
-	 * @return returns the number of hits recorded.
+	 * @return the number of hits recorded (in the game). All hits are counted, not
+	 *         just the first time a given square is hit.
 	 */
 	int getHitCount() {
 		return this.hitCount;
 	}
 
 	/**
-	 * This method gets the number of ships sunk
+	 * Returns true if the given location contains a real ship, still afloat, (not
+	 * an EmptySea), false if it does not. In addition, this method updates the
+	 * number of shots that have been fired, and the number of hits.
 	 * 
-	 * @return the number of ships sunk
+	 * @param row
+	 * @param column
+	 * @return
+	 */
+	boolean shootAt(int row, int column) {
+		// boolean checkRealShip = this.isOccupied(row, column);
+		Ship[][] ships = this.getShipArray();
+		boolean checkIsSunk = ships[row][column].isSunk();
+		this.shotsFired += 1;
+		if (checkIsSunk) {
+			return false;
+		} else {
+			boolean checkShiphit = ships[row][column].shootAt(row, column);
+
+			if (checkShiphit) {
+				// If the ship is not sunk, and the part of ship is hit, then hitCount increases
+				// by 1, even if the same part of ship is shot at multiple times.
+				this.hitCount += 1;
+				if (ships[row][column].isSunk()) {
+					this.shipsSunk += 1;
+					System.out.println("You just sunk a ship - " + ships[row][column].getShipType() + " !");
+				}
+				return true;
+			}
+			return false;
+		}
+	}
+
+	/**
+	 * Get if the ship is sunk.
+	 * 
+	 * @return the number of ships sunk (in the game)
 	 */
 	int getShipsSunk() {
 		return this.shipsSunk;
 	}
 
 	/**
-	 * This method returns true if all ships have been sunk, otherwise false
+	 * Check if the game is over.
 	 * 
 	 * @return true if all ships have been sunk, otherwise false
 	 */
 	boolean isGameOver() {
-		boolean over;
-
-		// the game is over when 10 ships have been sunk
-		if (this.getShipsSunk() == 10)
-			over = true;
-		else
-			over = false;
-
-		return over;
+		return this.getShipsSunk() >= Ocean.OCEAN_SIZE;
 	}
 
 	/**
-	 * This method returns the 10x10 array of Ships.
+	 * Get ships array from ocean.
 	 * 
-	 * @return the 10*10 array of ships
+	 * @return the 10x10 array of Ships
 	 */
 	Ship[][] getShipArray() {
+
 		return this.ships;
 	}
 
 	/**
-	 * Display the Ocean.
+	 * Prints the Ocean. The top left corner square should be 0, 0. Use "x" to
+	 * indicate a location that you have fired upon and hit a (real) ship. Use "-"
+	 * to indicate a location that you have fired upon and found nothing there. Use
+	 * "s" to indicate a location containing a sunken ship. and use "." (a period)
+	 * to indicate a location that you have never fired upon.
 	 */
 	void print() {
-		// print the column
-		System.out.println("  0 1 2 3 4 5 6 7 8 9 ");
 
-		for (int i = 0; i < 10; i++) {
+		System.out.println("  0 1 2 3 4 5 6 7 8 9");
+		for (int i = 0; i <= 9; i++) {
 
-			// print the row
 			System.out.print(i + " ");
+			for (int j = 0; j <= 9; j++) {
+				Ship ship = ships[i][j];
+				String stringOfStatus = "? ";
+				if (ship.getShipType() == "empty") {
+					boolean checkHit = ship.getHit()[0];
+					if (checkHit) {
+						// Return "-" if the spot is fired but nothing is found.
+						stringOfStatus = ship.toString();
+					} else {
+						stringOfStatus = ". ";
+					}
+				} else {
+					int bowColumn = ship.getBowColumn();
+					int bowRow = ship.getBowRow();
+					int position;
+					if (ship.isHorizontal()) {
+						position = bowColumn - j;
+					} else {
+						position = bowRow - i;
+					}
 
-			for (int j = 0; j < 10; j++)
-				System.out.print(map[i][j]);
-			System.out.print("\n");
+					if (ship.getHit()[position] == true) {
+						// Return "x" or "s" depending on if the ship is sunk.
+						stringOfStatus = ship.toString();
+					} else {
+						stringOfStatus = ". ";
+					}
+				}
+				System.out.print(stringOfStatus);
+				if (j == 9)
+					System.out.print("\n");
+			}
 		}
 	}
 }

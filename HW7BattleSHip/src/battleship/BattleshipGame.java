@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * main class of this game
  * 
- * @author meh
+ * @author Shunshun Liu &amp Liang Chen
  */
 public class BattleshipGame {
 
@@ -53,27 +53,27 @@ public class BattleshipGame {
 		while (continumeGame) {
 			Ocean ocean = new Ocean();
 			ocean.placeAllShipsRandomly();
-			ocean.print();
 			while (!ocean.isGameOver()) {
+				ocean.print();
 
 				System.out.println("Please input where you want to fire!");
 
 				while (true) {
 
-					System.out.println("Enter row, column: ");
+					System.out.println("Enter row,column: ");
 					String rowColPair = scanner.nextLine();
 					String[] rowColPairArray = rowColPair.split(",");
 
 					strrow = rowColPairArray[0].trim();
-					strcolumn = rowColPairArray[0].trim();
+					strcolumn = rowColPairArray[1].trim();
 					// System.out.println("row, column: ");
 					// strrow = scanner.next();
 					// System.out.println("column: ");
 					// strcolumn = scanner.next();
+
 					try {
 						row = Integer.parseInt(strrow);
 						column = Integer.parseInt(strcolumn);
-						// boolean shootSuccess = ocean.shootAt(row, column);
 						if (row > 9 || row < 0) {
 							System.out.println("please input the row index between 0-9!");
 						} else if (column > 9 || column < 0) {
@@ -92,7 +92,7 @@ public class BattleshipGame {
 				System.out.println("You have already fired: " + ocean.getShotsFired() + " times");
 				System.out.println("You have hitted: " + ocean.getHitCount() + " times");
 				System.out.println("You have led " + ocean.getShipsSunk() + " ship(s) sunk.");
-				ocean.print();
+				// ocean.print();
 
 			}
 			System.out.println("You have already fired: " + ocean.getShotsFired() + " times");

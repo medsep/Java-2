@@ -136,177 +136,41 @@ public abstract class Ship {
 	 * @return if it is legal to place ship
 	 */
 	boolean okToPlaceShipAt(int row, int column, boolean horizontal, Ocean ocean) {
-		int shipLength = this.getLength();
-		Ship[][] shipArray = ocean.getShipArray();
-
-		if (horizontal) {
-			int stern = column - (shipLength - 1);
-			if (stern < 0) {
+		// check the range
+		if (row > 9 || row < 0)
+			return false;
+		else if (column > 9 || column < 0)
+			return false;
+		if (horizontal == true) {
+			if ((column - this.getLength() + 1) < 0)
 				return false;
-			}
-
-			// check all around the ship for adjacent ships
-			for (int i = column; i >= stern; i--) {
-
-				// check if there another ship at this location
-				if (!this.isEmpty(shipArray[row][i])) {
-					return false;
-				}
-
-				// if it is the ships's bow
-				if (i == column) {
-					// adjacent right
-					if ((column + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						if (!this.isEmpty(shipArray[row][column + 1])) {
-							return false;
-						}
-					}
-					// top
-					if ((row - 1) >= 0) {
-						// adjacent top-right
-						if ((i + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-							if (!this.isEmpty(shipArray[row - 1][i + 1])) {
-								return false;
-							}
-
-						}
-
-						// adjacent top
-						if (!this.isEmpty(shipArray[row - 1][i])) {
-							return false;
-						}
-					}
-					// bottom
-					if ((row + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						// adjacent bottom-right
-						if ((i + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-							if (!this.isEmpty(shipArray[row + 1][i + 1])) {
-								return false;
-							}
-						}
-						// adjacent bottom
-						if (!this.isEmpty(shipArray[row + 1][i])) {
-							return false;
-						}
-					}
-				}
-				// every other location
-				if ((i < column) && (i > stern)) {
-
-					// adjacent top
-					if ((row - 1) >= 0) {
-						if (!this.isEmpty(shipArray[row - 1][i])) {
-							return false;
-						}
-					}
-					// adjacent bottom
-					if ((row + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						if (!this.isEmpty(shipArray[row + 1][i])) {
-							return false;
-						}
-					}
-				}
-			}
-
-		} else if (!horizontal) {
-			int stern = row - (shipLength - 1);
-			if (stern < 0) {
+		} else {
+			if ((row - this.getLength() + 1) < 0)
 				return false;
-			}
-			// check all around the ship for other adjacent ships
-			for (int i = row; i >= stern; i--) {
-				// check is another ship in this location
-				if (!this.isEmpty(shipArray[i][column])) {
-					return false;
-				}
-				// if it's the bow
-				if (i == row) {
-					// adjacent bottom
-					if ((i + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						if (!this.isEmpty(shipArray[i + 1][column])) {
-							return false;
-						}
-					}
-					// left
-					if ((column - 1) >= 0) {
-						// adjacent bottom-left
-						if ((i + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-							if (!this.isEmpty(shipArray[i + 1][column - 1])) {
-								return false;
-							}
-						}
-						// adjacent left
-						if (!this.isEmpty(shipArray[i][column - 1])) {
-							return false;
-						}
-					}
-					// adjacent bottom-right
-					if (((i + 1) <= (Ocean.OCEAN_SIZE - 1) && ((column + 1) <= (Ocean.OCEAN_SIZE - 1)))) {
-						if (!this.isEmpty(shipArray[i + 1][column + 1])) {
-							return false;
-						}
-					}
-					// adjacent right
-					if ((column + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						if (!this.isEmpty(shipArray[i][column + 1])) {
-							return false;
-						}
-					}
-				}
-				// if it is the stern
-				if (i == stern) {
-					// adjacent left
-					if ((i - 1) >= 0) {
-						if (!this.isEmpty(shipArray[row][i - 1])) {
-							return false;
-						}
-					}
-					// top
-					if ((row - 1) >= 0) {
-						// adjacent top-left
-						if ((i - 1) >= 0) {
-							if (!this.isEmpty(shipArray[row - 1][i - 1])) {
-								return false;
-							}
-						}
-						// adjacent-top
-						if (!this.isEmpty(shipArray[row - 1][i])) {
-							return false;
-						}
-					}
-					// bottom
-					if ((row + 1) <= (Ocean.OCEAN_SIZE - 1)) {
-						// adjacent bottom-left
-						if ((i - 1) >= 0) {
-							if (!this.isEmpty(shipArray[row + 1][i - 1])) {
-								return false;
-							}
-						}
-						// adjacent bottom
-						if (!this.isEmpty(shipArray[row + 1][i])) {
-							return false;
-						}
-					}
-				}
-				// every other location
-				if ((i < column) && (i > stern)) {
-					// adjacent top
-					if ((row - 1) >= 0) {
-						if (!this.isEmpty(shipArray[row - 1][i])) {
-							return false;
-						}
-					}
-					// adjacent bottom
-					if ((row + 1) <= Ocean.OCEAN_SIZE - 1) {
-						if (!this.isEmpty(shipArray[row + 1][i])) {
-							return false;
-						}
-					}
-				}
-			}
-
 		}
+
+		// compute the check range(the rectangle)
+		int r0 = Math.min(row + 1, 9); // the minimum coordinate is (0,0)
+		int c0 = Math.min(column + 1, 9);
+		int r1, c1;
+		if (horizontal == true) {
+			r1 = Math.max(row - 1, 0); // the maximum coordinate is (9,9)
+			c1 = Math.max(column - this.getLength(), 0);
+		} else {
+			r1 = Math.max(row - this.getLength(), 0);
+			c1 = Math.max(column - 1, 0);
+		}
+
+		// check the occupancy
+		for (int i = r0; i >= r1; i--) {
+			for (int j = c0; j >= c1; j--) {
+				if (ocean.isOccupied(i, j) == true)
+					return false;
+			}
+		}
+
 		return true;
+
 	}
 
 	/**
@@ -401,7 +265,6 @@ public abstract class Ship {
 			if (hit[i] == true) {
 				hits += 1;
 			}
-
 		}
 		if (hits == this.getLength()) {
 			// if the number of the hit true is equal to the length of the ship, then return
@@ -423,7 +286,6 @@ public abstract class Ship {
 	@Override
 	public String toString() {
 		boolean sunk = this.isSunk();
-		// System.out.println(sunk);
 		if (sunk) {
 			return "s";
 		} else {

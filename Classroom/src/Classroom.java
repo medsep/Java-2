@@ -95,6 +95,7 @@ public class Classroom {
 		}
 	}
 
+	@Override
 	public String toString() {
 		String s = "\n";
 
@@ -116,13 +117,17 @@ public class Classroom {
 		// Create students
 		Student fin = new Student("fin", "fingnew");
 		Student bob = new Student("bob", "roberts");
+		Student Bfin = new Student("Bfin", "fingnew");
+
 		// addd students to classroom
 		huntsman.addAStudent(fin);
 		huntsman.addAStudent(bob);
+		huntsman.addAStudent(Bfin);
 
 		// assign students to seats
 		huntsman.assignStudentToSeat(fin);
 		huntsman.assignStudentToSeat(bob);
+		huntsman.assignStudentToSeat(Bfin);
 
 		// print
 		huntsman.printAllStudents();

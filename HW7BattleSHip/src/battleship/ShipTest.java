@@ -158,7 +158,7 @@ class ShipTest {
 	}
 
 	@Test
-	void testIsHorizontal​() {
+	void testIsHorizontal() {
 		Ship battleship = new Battleship();
 		int row = 0;
 		int column = 4;
@@ -183,7 +183,6 @@ class ShipTest {
 		ship = new Battleship();
 		assertEquals("battleship", ship.getShipType());
 
-		// TODO
 		// More tests
 		ship = new Destroyer();
 		assertEquals("destroyer", ship.getShipType());
@@ -211,6 +210,7 @@ class ShipTest {
 		// TODO
 		// More tests
 		assertNotEquals((row - 1), battleship.getBowRow());
+		assertNotEquals((3 - column), cruiser.getBowRow());
 
 		// cruiser
 		cruiser.setBowRow(rowC);

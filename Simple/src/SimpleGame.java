@@ -76,8 +76,8 @@ public class SimpleGame {
 		int total = 0;
 
 		while (number > 0) {
-			int digit = number % 10;
-			number = number / 10;
+			int digit = number % 100;
+			number = number / 100;
 			total += digit;
 		}
 		System.out.println("The sum of the digits is " + input + " is " + total);

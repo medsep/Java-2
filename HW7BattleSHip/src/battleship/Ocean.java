@@ -16,6 +16,11 @@ public class Ocean {
 	private Ship[][] ships = new Ship[OCEAN_SIZE][OCEAN_SIZE];
 
 	/**
+	 * "map" is a String array which is used for printing.
+	 */
+	public String[][] map = new String[10][10];
+
+	/**
 	 * Number of ships in each fleet
 	 */
 
@@ -68,68 +73,65 @@ public class Ocean {
 	 */
 	void placeAllShipsRandomly() {
 
+		int row;
+		int column;
+		boolean horizontal;
 		Random random = new Random();
+
 		// place battleship
-		boolean horizontal = random.nextInt(2) == 0 ? true : false;
-		int row = random.nextInt(10);
-		int column = random.nextInt(10);
-		Battleship battleship = new Battleship();
-		while (true) {
-			if (battleship.okToPlaceShipAt(row, column, horizontal, this) == true) {
-				battleship.placeShipAt(row, column, horizontal, this);
-				// System.out.println("battleship placed");
-				break;
-			}
+		for (int i = 0; i < Ocean.NUM_BATTLESHIPS; i++) {
+			Ship battleship = new Battleship();
 			row = random.nextInt(10);
 			column = random.nextInt(10);
+			horizontal = random.nextInt(2) == 0 ? false : true;
+			while (!battleship.okToPlaceShipAt(row, column, horizontal, this)) {
+				row = random.nextInt(10);
+				column = random.nextInt(10);
+				horizontal = random.nextInt(2) == 0 ? false : true;
+			}
+			battleship.placeShipAt(row, column, horizontal, this);
 		}
+
 		// place cruiser
-		for (int i = 2; i > 0; i--) {
-			boolean horizontal1 = random.nextInt(2) == 0 ? true : false;
-			int row1 = random.nextInt(10);
-			int column1 = random.nextInt(10);
-			Cruiser cruiser = new Cruiser();
-			while (true) {
-				if (cruiser.okToPlaceShipAt(row1, column1, horizontal1, this) == true) {
-					cruiser.placeShipAt(row1, column1, horizontal1, this);
-					// System.out.println("cruiser placed");
-					break;
-				}
-				row1 = random.nextInt(10);
-				column1 = random.nextInt(10);
+		for (int i = 0; i < Ocean.NUM_CRUISERS; i++) {
+			Ship cruiser = new Cruiser();
+			row = random.nextInt(10);
+			column = random.nextInt(10);
+			horizontal = random.nextInt(2) == 0 ? false : true;
+			while (!cruiser.okToPlaceShipAt(row, column, horizontal, this)) {
+				row = random.nextInt(10);
+				column = random.nextInt(10);
+				horizontal = random.nextInt(2) == 0 ? false : true;
 			}
+			cruiser.placeShipAt(row, column, horizontal, this);
 		}
+
 		// place destroyer
-		for (int i = 3; i > 0; i--) {
-			boolean horizontal2 = random.nextInt(2) == 0 ? true : false;
-			int row2 = random.nextInt(10);
-			int column2 = random.nextInt(10);
-			Destroyer destroyer = new Destroyer();
-			while (true) {
-				if (destroyer.okToPlaceShipAt(row2, column2, horizontal2, this) == true) {
-					destroyer.placeShipAt(row2, column2, horizontal2, this);
-					// System.out.println("destroyer placed");
-					break;
-				}
-				row2 = random.nextInt(10);
-				column2 = random.nextInt(10);
+		for (int i = 0; i < Ocean.NUM_DESTROYERS; i++) {
+			Ship destroyer = new Destroyer();
+			row = random.nextInt(10);
+			column = random.nextInt(10);
+			horizontal = random.nextInt(2) == 0 ? false : true;
+			while (!destroyer.okToPlaceShipAt(row, column, horizontal, this)) {
+				row = random.nextInt(10);
+				column = random.nextInt(10);
+				horizontal = random.nextInt(2) == 0 ? false : true;
 			}
+			destroyer.placeShipAt(row, column, horizontal, this);
 		}
+
 		// place submarine
-		for (int i = 4; i > 0; i--) {
-			boolean horizontal3 = random.nextInt(2) == 0 ? true : false;
-			int row3 = random.nextInt(10);
-			int column3 = random.nextInt(10);
-			Submarine submarine = new Submarine();
-			while (true) {
-				if (submarine.okToPlaceShipAt(row3, column3, horizontal3, this) == true) {
-					submarine.placeShipAt(row3, column3, horizontal3, this);
-					// System.out.println("submarine placed");
-					break;
-				}
-				row3 = random.nextInt(10);
-				column3 = random.nextInt(10);
+		for (int i = 0; i < Ocean.NUM_SUBMARINES; i++) {
+			Ship submarine = new Submarine();
+			row = random.nextInt(10);
+			column = random.nextInt(10);
+			horizontal = random.nextInt(2) == 0 ? false : true;
+			while (!submarine.okToPlaceShipAt(row, column, horizontal, this)) {
+				row = random.nextInt(10);
+				column = random.nextInt(10);
+				horizontal = random.nextInt(2) == 0 ? false : true;
 			}
+			submarine.placeShipAt(row, column, horizontal, this);
 		}
 	}
 
@@ -241,6 +243,7 @@ public class Ocean {
 	 * "s" to indicate a location containing a sunken ship. and use "." (a period)
 	 * to indicate a location that you have never fired upon.
 	 */
+
 	void print() {
 
 		System.out.println("  0 1 2 3 4 5 6 7 8 9");
@@ -270,7 +273,7 @@ public class Ocean {
 
 					if (ship.getHit()[position] == true) {
 						// Return "x" or "s" depending on if the ship is sunk.
-						stringOfStatus = ship.toString();
+						stringOfStatus = ship.toString() + " ";
 					} else {
 						stringOfStatus = ". ";
 					}

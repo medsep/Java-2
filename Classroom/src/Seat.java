@@ -43,6 +43,7 @@ public class Seat {
 	/*
 	 * return row and column for this seat
 	 */
+	@Override
 	public String toString() {
 		return this.row + ", " + this.column + ": " + this.studentInSeat;
 	}

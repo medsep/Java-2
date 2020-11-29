@@ -58,7 +58,7 @@ public class CollectionsClass {
 	}
 
 	/**
-	 * Takes a given array and returns map with a key for each strnig and valie for
+	 * Takes a given array and returns map with a key for each strnig and value for
 	 * number of times string appears in the array. Demosntrates use of hash map
 	 * 
 	 * @param strings

@@ -24,10 +24,10 @@ public class Ocean {
 	 * Number of ships in each fleet
 	 */
 
-	static final int NUM_BATTLESHIPS = 1;
-	static final int NUM_CRUISERS = 2;
-	static final int NUM_DESTROYERS = 3;
-	static final int NUM_SUBMARINES = 4;
+	static final int NUM_BATTLESHIPS = 1;// 1
+	static final int NUM_CRUISERS = 2;// 2
+	static final int NUM_DESTROYERS = 3;// 3
+	static final int NUM_SUBMARINES = 4;// 4
 
 	/** The total number of shots fired by the user */
 	private int shotsFired;

@@ -1,4 +1,4 @@
-package Hangman;
+package hangman;
 
 /**
  * The harder version Extends the nrmal game

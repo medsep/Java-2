@@ -33,11 +33,15 @@ public class BattleshipGame {
 
 			// ask whether to play again
 			System.out.println("Do you want to play again? y/n");
-			String ans = scan.next();
-			if (ans.startsWith("y") || ans.startsWith("Y"))
+			String answer = scan.next();
+			if (answer.toLowerCase().charAt(0) == 'y') {
 				again = true;
-			else if (ans.startsWith("n") || ans.startsWith("N"))
+				break;
+			} else {
 				again = false;
+				break;
+			}
+
 		}
 		scan.close();
 	}

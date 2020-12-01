@@ -3,7 +3,8 @@ package battleship;
 import java.util.Random;
 
 /**
- * Class of the 10X10 ocean
+ * Class of the 10X10 ocean This contains a 10x10 array of Ships, representing
+ * an “ocean”, and some methods to manipulate it
  */
 public class Ocean {
 
@@ -11,23 +12,18 @@ public class Ocean {
 	 * size of ocean and number of ships in the fleet
 	 */
 	static final int OCEAN_SIZE = 10;
-
-	/** Used to quickly determine which ship is in any given location */
-	private Ship[][] ships = new Ship[OCEAN_SIZE][OCEAN_SIZE];
-
-	/**
-	 * "map" is a String array which is used for printing.
-	 */
-	public String[][] map = new String[10][10];
-
 	/**
 	 * Number of ships in each fleet
 	 */
-
 	static final int NUM_BATTLESHIPS = 1;// 1
 	static final int NUM_CRUISERS = 2;// 2
 	static final int NUM_DESTROYERS = 3;// 3
 	static final int NUM_SUBMARINES = 4;// 4
+	/************************************************************************
+	 * /** Instance variable: Used to quickly determine which ship is in any given
+	 * location
+	 */
+	private Ship[][] ships = new Ship[OCEAN_SIZE][OCEAN_SIZE];
 
 	/** The total number of shots fired by the user */
 	private int shotsFired;
@@ -42,9 +38,9 @@ public class Ocean {
 	/** The number of ships sunk (10 ships in all) */
 	private int shipsSunk;
 
-	/**
-	 * Creates an ocean initializes any game variables, such as how many shots have
-	 * been fired.
+	/************************************************************************
+	 * Constructor: Creates an ocean initializes any game variables, such as how
+	 * many shots have been fired.
 	 */
 	public Ocean() {
 
@@ -55,7 +51,7 @@ public class Ocean {
 
 	}
 
-	/**
+	/************************************************************************
 	 * randomly places ships
 	 */
 	private void populateEmptyOcean() {
@@ -67,7 +63,7 @@ public class Ocean {
 		}
 	}
 
-	/**
+	/************************************************************************
 	 * Place all ten ships randomly on the (initially empty) ocean. Place larger
 	 * ships before smaller ones,
 	 */
@@ -135,7 +131,7 @@ public class Ocean {
 		}
 	}
 
-	/**
+	/************************************************************************
 	 * Returns true if the given location contains a real ship, still afloat,false
 	 * if it does not. In addition, this method updates the number of shots that
 	 * have been fired, and the number of hits.
@@ -156,7 +152,7 @@ public class Ocean {
 		}
 	}
 
-	/**
+	/************************************************************************
 	 * Get shots you have fired.
 	 * 
 	 * @return the number of shots fired (in the game)
@@ -176,6 +172,24 @@ public class Ocean {
 	}
 
 	/**
+	 * Get if the ship is sunk.
+	 * 
+	 * @return the number of ships sunk (in the game)
+	 */
+	int getShipsSunk() {
+		return this.shipsSunk;
+	}
+
+	/**
+	 * Get ships array from ocean.
+	 * 
+	 * @return the 10x10 array of Ships
+	 */
+	Ship[][] getShipArray() {
+		return this.ships;
+	}
+
+	/************************************************************************
 	 * Returns true if the given location contains a real ship, still afloat, (not
 	 * an EmptySea), false if it does not. In addition, this method updates the
 	 * number of shots that have been fired, and the number of hits.
@@ -208,16 +222,7 @@ public class Ocean {
 		}
 	}
 
-	/**
-	 * Get if the ship is sunk.
-	 * 
-	 * @return the number of ships sunk (in the game)
-	 */
-	int getShipsSunk() {
-		return this.shipsSunk;
-	}
-
-	/**
+	/************************************************************************
 	 * Check if the game is over.
 	 * 
 	 * @return true if all ships have been sunk, otherwise false
@@ -226,17 +231,7 @@ public class Ocean {
 		return this.getShipsSunk() >= Ocean.OCEAN_SIZE;
 	}
 
-	/**
-	 * Get ships array from ocean.
-	 * 
-	 * @return the 10x10 array of Ships
-	 */
-	Ship[][] getShipArray() {
-
-		return this.ships;
-	}
-
-	/**
+	/************************************************************************
 	 * Prints the Ocean. The top left corner square should be 0, 0. Use "x" to
 	 * indicate a location that you have fired upon and hit a (real) ship. Use "-"
 	 * to indicate a location that you have fired upon and found nothing there. Use
@@ -284,4 +279,24 @@ public class Ocean {
 			}
 		}
 	}
+
+	/**
+	 * Print the ocean with all ships. This is used for debugging purposes, in the
+	 * main method.
+	 * 
+	 */
+	public void printWithShips() {
+		System.out.println("  0 1 2 3 4 5 6 7 8 9");
+		for (int i = 0; i < OCEAN_SIZE; i++) {
+			System.out.print(i + " ");
+			for (int j = 0; j < OCEAN_SIZE; j++) {
+				if (isOccupied(i, j))
+					System.out.print("O ");
+				else
+					System.out.print("- ");
+			}
+			System.out.println();
+		}
+	}
+
 }

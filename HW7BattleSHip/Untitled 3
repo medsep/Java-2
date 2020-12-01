@@ -1,0 +1,89 @@
+// ask whether to play again
+			System.out.println("Do you want to play again? y/n");
+			String answer = scan.next();
+			if (answer.toLowerCase().charAt(0) == 'y') {
+				again = true;
+			} else if (answer.toLowerCase().charAt(0) == 'n') {
+				again = false;
+			} else if (!answer.startsWith("Y") || !answer.startsWith("N") || !answer.startsWith("y")
+					|| !answer.startsWith("n")) {
+				throw new IllegalArgumentException("Invalid input!!");
+				
+  0 1 2 3 4 5 6 7 8 9
+0 - - O O O - - - - - 
+1 O - - - - - - - - - 
+2 O - - - - - - - - O 
+3 - - - - - O O O - O 
+4 - - - - - - - - - - 
+5 - - O - O - - - - - 
+6 - - - - - - O - O - 
+7 - - - - - - - - - - 
+8 - - O O - O O O O - 
+9 - - - - - - - - - - 
+
+
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		boolean again = true;
+
+		while (again == true) {
+			// a new game
+			// new BattleshipGame().game(scan);
+
+			try {// ask whether to play again
+				System.out.println("Do you want to play again? y/n");
+				String answer = scan.next();
+				if (answer.toLowerCase().charAt(0) == 'y') {
+					again = true;
+				} else if (answer.toLowerCase().charAt(0) == 'n') {
+					again = false;
+				} else {
+					throw new IllegalArgumentException("Invalid input!!");
+				}
+
+			} catch (Exception e) {
+				System.out.println("Invalid entry!!");
+			}
+
+		}
+		scan.close();
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		boolean again = true;
+
+		while (again == true) {
+			// a new game
+			new BattleshipGame().game(scan);
+			// ask whether to play again
+			// ask whether to play again
+
+			// ask whether to play again
+			System.out.println("Do you want to play again? y/n");
+			String answer = scan.next();
+			if (answer.toLowerCase().charAt(0) == 'y') {
+				again = true;
+			} else// if (answer.toLowerCase().charAt(0) == 'n')
+			{
+				again = false;
+			}
+
+		}
+		scan.close();
+	}

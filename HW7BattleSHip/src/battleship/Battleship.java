@@ -8,7 +8,7 @@ package battleship;
  */
 public class Battleship extends Ship {
 	/**
-	 * TYpe of ship
+	 * Type of ship
 	 */
 	static final String SHIP_TYPE = "battleship";
 	/**
@@ -32,5 +32,4 @@ public class Battleship extends Ship {
 	public String getShipType() {
 		return Battleship.SHIP_TYPE;
 	}
-
 }

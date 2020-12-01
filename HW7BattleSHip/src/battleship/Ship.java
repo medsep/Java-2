@@ -1,7 +1,8 @@
 package battleship;
 
 /**
- * The abstract Ship class has the instance variables below
+ * The abstract Ship class that is used to place ships in the Ocean. Methods
+ * will be inherited by 4 ship classes.
  */
 public abstract class Ship {
 
@@ -40,8 +41,8 @@ public abstract class Ship {
 		}
 	}
 
-	/**
-	 * get ship length
+	/************************************************************************************
+	 * Getter: get ship length
 	 * 
 	 * @return the ship length
 	 */
@@ -50,7 +51,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * get the bow row of this ship
+	 * Getter: get the bow row of this ship
 	 * 
 	 * @return the row corresponding to the position of the bow
 	 */
@@ -60,7 +61,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * get the bow column of this ship
+	 * Getter: get the bow column of this ship
 	 * 
 	 * @return the bow column location
 	 */
@@ -69,7 +70,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * get hit array
+	 * Getter: get hit array
 	 * 
 	 * @return the hit array
 	 */
@@ -78,7 +79,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * check if this ship is horizontal
+	 * Getter: check if this ship is horizontal
 	 * 
 	 * @return whether the ship is horizontal or not
 	 */
@@ -86,8 +87,8 @@ public abstract class Ship {
 		return this.horizontal;
 	}
 
-	/**
-	 * Sets the value of bowRow
+	/************************************************************************
+	 * Setter: Sets the value of bowRow
 	 * 
 	 * @param row the value of bowRow
 	 */
@@ -96,7 +97,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * Sets the value of bowColumn
+	 * Setter: Sets the value of bowColumn
 	 * 
 	 * @param column the value of bowColumn
 	 */
@@ -105,7 +106,7 @@ public abstract class Ship {
 	}
 
 	/**
-	 * Sets the value of the instance variable horizontal
+	 * Setter: Sets the value of the instance variable horizontal
 	 * 
 	 * @param horizontal horizontal
 	 */
@@ -113,7 +114,7 @@ public abstract class Ship {
 		this.horizontal = horizontal;
 	}
 
-	/**
+	/************************************************************************
 	 * Returns the type of ship as a String. Every specific type of Ship (e.g.
 	 * BattleShip, Cruiser, etc.) has to override and implement this method and
 	 * return the corresponding ship type.
@@ -122,7 +123,7 @@ public abstract class Ship {
 	 */
 	public abstract String getShipType();
 
-	/**
+	/************************************************************************
 	 * Based on the given row, column, and orientation, returns true if it is okay
 	 * to put a ship of this length with its bow in this location; false otherwise.
 	 * The ship must not overlap another ship, or touch another ship (vertically,
@@ -150,37 +151,28 @@ public abstract class Ship {
 		}
 
 		// compute the check range(the rectangle)
-		int r0 = Math.min(row + 1, 9); // the minimum coordinate is (0,0)
-		int c0 = Math.min(column + 1, 9);
-		int r1, c1;
+		int row0 = Math.min(row + 1, 9); // the minimum coordinate is (0,0)
+		int column0 = Math.min(column + 1, 9);
+		int row1, column1;
 		if (horizontal == true) {
-			r1 = Math.max(row - 1, 0); // the maximum coordinate is (9,9)
-			c1 = Math.max(column - this.getLength(), 0);
+			row1 = Math.max(row - 1, 0); // the maximum coordinate is (9,9)
+			column1 = Math.max(column - this.getLength(), 0);
 		} else {
-			r1 = Math.max(row - this.getLength(), 0);
-			c1 = Math.max(column - 1, 0);
+			row1 = Math.max(row - this.getLength(), 0);
+			column1 = Math.max(column - 1, 0);
 		}
 
 		// check the occupancy
-		for (int i = r0; i >= r1; i--) {
-			for (int j = c0; j >= c1; j--) {
+		for (int i = row0; i >= row1; i--) {
+			for (int j = column0; j >= column1; j--) {
 				if (ocean.isOccupied(i, j) == true)
 					return false;
 			}
 		}
-
 		return true;
-
 	}
 
-	/**
-	 * Return is ship is in an empty sea
-	 */
-	private boolean isEmpty(Ship ship) {
-		return "empty".equals(ship.getShipType());
-	}
-
-	/**
+	/************************************************************************
 	 * place the ship in ocean This involves giving values to the bowRow, bowColumn,
 	 * and horizontal instance variables in the ship, and it also involves putting a
 	 * reference to the ship in each of 1 or more locations (up to 4) in the ships
@@ -208,10 +200,9 @@ public abstract class Ship {
 				ocean.getShipArray()[row][j] = this;
 			}
 		}
-
 	}
 
-	/**
+	/************************************************************************
 	 * If a part of the ship occupies the given row and column, and the ship hasn't
 	 * been sunk, mark that part of the ship as "hit"
 	 * 
@@ -252,7 +243,7 @@ public abstract class Ship {
 		return false;
 	}
 
-	/**
+	/************************************************************************
 	 * Return true if every part of the ship has been hit, false otherwise.
 	 * 
 	 * @return if every part of the ship has been hit
@@ -273,10 +264,9 @@ public abstract class Ship {
 		} else {
 			return false;
 		}
-
 	}
 
-	/**
+	/************************************************************************
 	 * Returns a single-character String to use in the Ocean to print method. This
 	 * method should return ""s"" if the ship has been sunk and "x" if it has not
 	 * been sunk. This method can be used to print out locations in the ocean that

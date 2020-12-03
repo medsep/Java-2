@@ -1,6 +1,7 @@
 package hangman;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -86,10 +87,64 @@ public class HangmanGame {
 				System.out.println("You played the normal version of hangman. \n" + "You had a total of "
 						+ start.getCount() + "guesses.");
 			}
+			// to play the evil version
 			if (level == 1) {
+				HangmanGame hangGame = new HangmanGame();
 
+				HangmanEvil hangEvil = new HangmanEvil();
+
+				ArrayList<String> pool = hangEvil.newDictionary(filename);
+
+				HangmanGame.incorrectList = new ArrayList<String>();
+
+				while (hangEvil.isGameOver() == false) {
+					while (true) {
+						System.out.println("Guess a letter:");
+
+						if (hangEvil.getCountCorrect() == 0) {
+							for (String element : HangmanGame.current) {
+								System.out.println(element);
+							}
+							System.out.println();
+						}
+						String input = sc.next();
+
+						String input1 = Character.toString(input.charAt(0));
+
+						if (history.contains(input1)) {
+							System.out.println("You already used this letter. \n" + "Try a new one!");
+						} else if (Character.isLetter(input1.charAt(0)) && !history.contains(input1)) {
+							history.add(input1);
+							hangEvil.print(word, input1);
+
+							break;
+						}
+
+						if (hangEvil.getCount() == 1) {
+							HashMap<String, ArrayList<String>> family = hangEvil.buildDictionary(pool, input1);
+							hangGame.pool2 = hangEvil.pickLargestFamily(family);
+						}
+						hangEvil.isGameOver(word);
+					}
+					System.out.println(
+							"You played the Evil Hangman./n" + "Your total guess count was:  " + hangEvil.getCount());
+				}
+				boolean playAgain = true;
+				while (playAgain == true) {
+					System.out.println("Play again? (Y/N)");
+					String reply = sc.next();
+					if (reply.equals("n") || reply.equals("N")) {
+						System.out.println("Bye.");
+						again = true;
+						playAgain = false;
+					}
+					if (reply.equals("y") || reply.contentEquals("Y")) {
+						System.out.println("Lets play again.");
+						again = false;
+					}
+				}
 			}
-
+			sc.close();
 		}
 
 	}

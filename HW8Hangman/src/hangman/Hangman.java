@@ -6,7 +6,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -38,40 +41,20 @@ public class Hangman {
 		return count;
 	}
 
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-	public int getCountCorrect() {
-		return getCountCorrect();
-	}
-
-	public void setCountCorrect(int countCorrect) {
-		this.correctCount = countCorrect;
-	}
-
 	public int getCountMistakes() {
-		return getCountMistakes();
-	}
-
-	public void setCountMistakes(int countMistakes) {
-		this.correctCount = countMistakes;
+		return mistakesCount;
 	}
 
 	public boolean isGameOver() {
 		return isGameOver;
 	}
 
-	public void setGameOver(boolean isGameOver) {
-		this.isGameOver = isGameOver;
-	}
-
 	public Hangman() {
-		int count = 0;
-		int correctCount = 0;
-		int mistakesCount = 0;
-		boolean goodGuess = false;
-		boolean isGameOver = false;
+		this.count = 0;
+		this.correctCount = 0;
+		this.mistakesCount = 0;
+		this.goodGuess = false;
+		this.isGameOver = false;
 	}
 
 	/**
@@ -105,7 +88,6 @@ public class Hangman {
 			// gets and prints file name
 			System.out.println("Sorry, " + file.getName() + " not found.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			// regardless of what happnes close file objects
@@ -113,7 +95,6 @@ public class Hangman {
 				fileReader.close();
 				bufferedReader.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -126,9 +107,9 @@ public class Hangman {
 	 * @param filename
 	 * @return
 	 */
-	public static ArrayList<String> cleanWords(ArrayList<String> filename) {
+	public static ArrayList<String> cleanWords(ArrayList<String> words) {
 
-		ArrayList<String> words = new ArrayList<String>();
+		ArrayList<String> newWords = new ArrayList<String>();
 
 		for (String word : words) {
 			Pattern p = Pattern.compile("[A-Z0-9.'\\s]+");
@@ -137,10 +118,10 @@ public class Hangman {
 			if (m.find()) {
 				continue;
 			} else {
-				words.add(word);
+				newWords.add(word);
 			}
 		}
-		return words;
+		return newWords;
 	}
 
 	/**
@@ -168,6 +149,26 @@ public class Hangman {
 	 * @return
 	 */
 	public boolean isGameOver(String word) {
+
+		List<Character> chars = new ArrayList<>();
+
+		for (char ch : word.toCharArray()) {
+			chars.add(ch);
+		}
+
+		Set<Character> set = new HashSet<Character>(chars);
+
+		if (this.count <= 15) {
+			if (this.count - this.mistakesCount == set.size()) {
+				this.isGameOver = true;
+
+				System.out.println("Congratulations! You won!");
+			}
+		} else {
+			this.isGameOver = true;
+			System.out.println("Sorry. You lose.");
+		}
+
 		return isGameOver;
 
 	}
@@ -195,7 +196,7 @@ public class Hangman {
 	 * @param word
 	 * @param letter
 	 */
-	void print(String word, String letter) {
+	public void print(String word, String letter) {
 		count += 1;
 		if (this.correctGuess(word, letter)) {
 			int i = word.indexOf(letter);
@@ -211,6 +212,8 @@ public class Hangman {
 		for (String j : HangmanGame.current) {
 			System.out.print(j);
 		}
-		System.out.println("/n");
+		System.out.println();
+		System.out.println();
+
 	}
 }

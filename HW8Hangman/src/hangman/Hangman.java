@@ -168,9 +168,7 @@ public class Hangman {
 			this.isGameOver = true;
 			System.out.println("Sorry. You lose.");
 		}
-
 		return isGameOver;
-
 	}
 
 	/**
@@ -201,15 +199,15 @@ public class Hangman {
 		if (this.correctGuess(word, letter)) {
 			int i = word.indexOf(letter);
 			while (i >= 0) {
-				HangmanGame.current.set(i, letter + " ");
+				Controller.HangmanGame.current.set(i, letter + " ");
 				i = word.indexOf(letter, i + 1);
 			}
 		} else {
-			HangmanGame.incorrectList.add(letter);
-			System.out.println("Incorrect guesses: " + HangmanGame.incorrectList);
+			Controller.HangmanGame.incorrectList.add(letter);
+			System.out.println("Incorrect guesses: " + Controller.HangmanGame.incorrectList);
 			mistakesCount += 1;
 		}
-		for (String j : HangmanGame.current) {
+		for (String j : Controller.HangmanGame.current) {
 			System.out.print(j);
 		}
 		System.out.println();

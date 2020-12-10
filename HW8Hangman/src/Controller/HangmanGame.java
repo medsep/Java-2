@@ -6,12 +6,16 @@ Statement of work: Work is completely my own. The only resources used
 """
  */
 
-package hangman;
+package Controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+
+import dictionary.HangmanDictionary;
+import hangman.Hangman;
+import hangman.HangmanEvil;
 
 /**
  * Conroller class. Runs the games.
@@ -36,13 +40,22 @@ public class HangmanGame {
 	 * guessing
 	 */
 	public ArrayList<String> pool2;
+	static boolean again = false;
+	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+
+		// HangmanDictionary.readDictionary(fileName)();
+
+		// File file = null;
+
+		// Scanner sc = new Scanner(System.in);
 		// direct to word package
-		// String filename = "/com/dictionary/words.txt";
+		// String filename = "/src/dictionary/words.txt";
+		// Scanner sc = new Scanner(filename);
 
 		String filename = "words.txt";
+		HangmanDictionary.readDictionary(filename);
 		// check the file exists
 		if (filename != null) {
 			System.out.println("resource found at url= " + filename);
@@ -52,7 +65,6 @@ public class HangmanGame {
 
 		//
 
-		boolean again = false;
 		while (again == false) {
 
 			String word = Hangman.selectWord(filename);
@@ -73,14 +85,16 @@ public class HangmanGame {
 				while (start.isGameOver() == false) {
 					while (true) {
 						System.out.println("Guess a letter: ");
-
+						System.out.println("Guess count: " + start.getCount());
 						if (start.getCount() == 0) {
 							for (String k : HangmanGame.current) {
 								System.out.print(k);
+
 							}
+
 							System.out.println();
 						}
-						String input = sc.next();
+						String input = scan.next();
 						String convertInput = Character.toString(input.charAt(0));
 
 						if (history.contains(convertInput)) {
@@ -111,14 +125,16 @@ public class HangmanGame {
 				while (hangEvil.isGameOver() == false) {
 					while (true) {
 						System.out.println("Guess a letter:");
-
+						System.out.println("Guess count: " + hangEvil.getCount());
 						if (hangEvil.getCount() == 0) {
 							for (String element : HangmanGame.current) {
 								System.out.print(element);
+
 							}
+
 							System.out.println();
 						}
-						String input = sc.next();
+						String input = scan.next();
 
 						String input1 = Character.toString(input.charAt(0));
 
@@ -144,34 +160,42 @@ public class HangmanGame {
 				System.out.println(
 						"You played the Evil Hangman." + "\n" + "Your total guess count was:  " + hangEvil.getCount());
 			}
-			boolean playAgain = true;
-			while (playAgain == true) {
-				System.out.println("Play again? (Y/N)");
-				String reply = sc.next();
-				if (reply.equals("n") || reply.equals("N")) {
-					System.out.println("Bye.");
-					again = true;
-					playAgain = false;
-				}
-				if (reply.equals("y") || reply.contentEquals("Y")) {
-					System.out.println("Lets play again.");
-					playAgain = false;
-				}
-			}
+			playAgain();
 		}
-		sc.close();
+		// sc.close();
 
+	}
+
+	public static boolean levelSelector(int level) {
+		Random rand = new Random();
+		level = rand.nextInt(2);
+		return true;
+	}
+
+	public static boolean playAgain() {
+
+		boolean playAgain = true;
+		while (playAgain == true) {
+			System.out.println("Play again? (Y/N)");
+			String reply = scan.next();
+			if (reply.equals("n") || reply.equals("N")) {
+				System.out.println("Thank you for playing.");
+				again = true;
+				playAgain = false;
+			}
+			if (reply.equals("y") || reply.contentEquals("Y")) {
+				System.out.println("Lets play again.");
+				playAgain = false;
+			}
+
+		}
+		return playAgain;
+		// scan.close();
 	}
 
 	// Instructions.
 	public static void Instructions() {
-		System.out.println("Hangman is a 2-player word-guessing game generally played by having one player "
-				+ "think of a word and the other player trying to guess that word letter by letter.\n"
-				+ "The computer will pick a random word from a dictionary. A row of underscores represent "
-				+ "each letter of the word (e.g. ‘dog’ would be shown to the user as _ _ _).\n"
-				+ "You guess one letter at a time. Every correct letter that they guess is shown in its correct location(s).\n"
-				+ "You have 15 chances to guess.\n" + "You are not allowed to guess a letter twice.\n"
-				+ "This game has two versions: traditional and evil.\n"
+		System.out.println("Welcome to Hangman.\n" + "This game has two versions: traditional and evil.\n"
 				+ "In the traditional version of the game, the computer has to stick to the original word as the user guesses;\n"
 				+ "In the evil version, the computer keeps changing the word in order to make the user’s task harder.\n"
 				+ "You won't be told which version you are playing until the game is over.\n" + "");

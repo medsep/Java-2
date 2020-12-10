@@ -6,8 +6,11 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="getShotsFired"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="guessHistory"/>
+			<item value="History"/>
+			<item value="map"/>
 			<item value="getShotsFired"/>
 			<item value="setColumnRow"/>
 			<item value="setBowColumn"/>
@@ -20,9 +23,6 @@
 			<item value="boolean"/>
 			<item value="Fractions"/>
 			<item value="Fractions2"/>
-			<item value="Fraction"/>
-			<item value="winnerCandidate"/>
-			<item value="smallestDifference"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Fraction"/>

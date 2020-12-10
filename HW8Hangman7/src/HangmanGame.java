@@ -60,37 +60,54 @@ public class HangmanGame {
 		// store all the words in a list
 		List<String> wordList = myReader.readFileIn();
 
-		// randomly choose game version
-		String versionOfGame = HangmanGame.randomChooseVersion();
-		// create Hangman instance
-		Hangman hangman;
-		if (versionOfGame.equals("traditional hangman")) {
-			hangman = new HangmanTraditional(wordList);
-		} else {
-			hangman = new HangmanEvil(wordList);
+		while (again == false) {
+			// randomly choose game version
+			String versionOfGame = HangmanGame.randomChooseVersion();
+			// create Hangman instance
+			Hangman hangman;
+			if (versionOfGame.equals("traditional hangman")) {
+				hangman = new HangmanTraditional(wordList);
+			} else {
+				hangman = new HangmanEvil(wordList);
+			}
+
+			// provide initial information
+			System.out.println("Welcome to Hangman!\n");
+			System.out.println();
+
+			// While the game is not over
+			while (hangman.isGameOver() == false) {
+
+				// print correct game status
+				hangman.printHangman();
+
+				// have the user take a turn.
+				hangman.haveUserTakeTurn();
+
+			}
+
+			// print final game information
+			System.out.println(
+					"Congratulations, you have guessed the correct word \n" + "\"" + hangman.getTheWord() + "\"!");
+			System.out.println();
+			System.out.println("Mode: " + versionOfGame);
+			System.out
+					.println("Guess count: " + (hangman.getCorrectGuess().size() + hangman.getIncorrectGuess().size()));
+			System.out.println("Mistakes count: " + hangman.getIncorrectGuess().size());
+
+			System.out.println("Play again? (Y/N)");
+			String reply = scanner.next();
+			while (reply.charAt(0) != 'n' && reply.charAt(0) != 'N' && reply.charAt(0) != 'y'
+					&& reply.charAt(0) != 'Y') {
+				System.out.println("Please enter y/n");
+				reply = scanner.nextLine();
+			}
+			if (reply.charAt(0) == 'n' || reply.charAt(0) == 'N') {
+				again = true;
+				System.out.println("Thank you for playing!");
+
+			}
 		}
-
-		// provide initial information
-		System.out.println("Welcome to Hangman!\n");
-		System.out.println();
-
-		// While the game is not over
-		while (hangman.isGameOver() == false) {
-
-			// print correct game status
-			hangman.printHangman();
-
-			// have the user take a turn.
-			hangman.haveUserTakeTurn();
-
-		}
-
-		// print final game information
-		System.out.println("Congratulations, you have guessed the correct word \"" + hangman.getTheWord() + "\"!");
-		System.out.println();
-		System.out.println("Mede: " + versionOfGame);
-		System.out.println("Guess count: " + (hangman.getCorrectGuess().size() + hangman.getIncorrectGuess().size()));
-		System.out.println("Mistakes count: " + hangman.getIncorrectGuess().size());
 
 		// close scanner
 		Hangman.scanner.close();

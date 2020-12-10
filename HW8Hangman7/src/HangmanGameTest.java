@@ -12,7 +12,7 @@ class HangmanGameTest {
 	@Test
 	void testRandomChooseVersion() {
 
-		// this is a random method so just test for several times
+		// test the game version randomly
 		String version = HangmanGame.randomChooseVersion();
 
 		assertTrue(version.equals("traditional hangman") || version.equals("evil hangman"));

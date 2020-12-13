@@ -8,6 +8,11 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="cleanWords"/>
+			<item value="k l a f a l a y a"/>
+			<item value="HangmanGame"/>
+			<item value="HangmanGame.current.set(i, letter + &quot; &quot;);"/>
+			<item value="ha"/>
 			<item value="guessHistory"/>
 			<item value="History"/>
 			<item value="map"/>
@@ -18,11 +23,6 @@
 			<item value="shootAt"/>
 			<item value="shipSunk"/>
 			<item value="getShipSunk"/>
-			<item value="getShip"/>
-			<item value="gcd"/>
-			<item value="boolean"/>
-			<item value="Fractions"/>
-			<item value="Fractions2"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Fraction"/>

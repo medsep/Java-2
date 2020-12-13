@@ -25,7 +25,7 @@
 	</section>
 	<section name="NewClassWizardPage">
 		<item key="create_constructor" value="false"/>
-		<item key="create_unimplemented" value="false"/>
+		<item key="create_unimplemented" value="true"/>
 	</section>
 	<section name="ClasspathContainerSelectionPage">
 		<item key="index" value="0"/>
@@ -69,7 +69,7 @@
 		<item key="fromStandard" value="true"/>
 		<item key="docletname" value=""/>
 		<item key="docletpath" value=""/>
-		<item key="access" value="public"/>
+		<item key="access" value="private"/>
 		<item key="use" value="true"/>
 		<item key="author" value="true"/>
 		<item key="version" value="true"/>
@@ -81,9 +81,282 @@
 		<item key="nonavbar" value="false"/>
 		<item key="openinbrowser" value="false"/>
 		<item key="source" value="13"/>
-		<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW7BattleSHip\javadoc.xml"/>
-		<item key="destdir" value="C:\Users\meh\Desktop\docs"/>
+		<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman7\javadoc.xml"/>
+		<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman7\doc"/>
 		<section name="projects">
+			<section name="simple_21_5">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\simple_21_5\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\simple_21_5\javadoc.xml"/>
+			</section>
+			<section name="5functions">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\5functions\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\5functions\javadoc.xml"/>
+			</section>
+			<section name="Week8">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Week8\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Week8\javadoc.xml"/>
+			</section>
+			<section name="HW7_CIT590">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW7_CIT590\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW7_CIT590\javadoc.xml"/>
+			</section>
+			<section name="SentinelValue">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\SentinelValue\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\SentinelValue\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman6">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman6\javadoc.xml"/>
+			</section>
+			<section name="Battle_2">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Battle_2\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Battle_2\javadoc.xml"/>
+			</section>
+			<section name="W14WebsiteFeedbackProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W14WebsiteFeedbackProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W14WebsiteFeedbackProject\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman7">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman7\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman7\javadoc.xml"/>
+			</section>
+			<section name="W11Debugging">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W11Debugging\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W11Debugging\javadoc.xml"/>
+			</section>
+			<section name="Arrays">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Arrays\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Arrays\javadoc.xml"/>
+			</section>
+			<section name="DogProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\DogProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\DogProject\javadoc.xml"/>
+			</section>
+			<section name="Simple">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Simple\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Simple\javadoc.xml"/>
+			</section>
+			<section name="transportation">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W11\Practice-Coding-13_CIT-591b\transportation\doc"/>
+				<item key="antpath" value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W11\Practice-Coding-13_CIT-591b\transportation\javadoc.xml"/>
+			</section>
+			<section name="W10">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W10\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W10\javadoc.xml"/>
+			</section>
+			<section name="Dezfuli">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Dezfuli\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Dezfuli\javadoc.xml"/>
+			</section>
+			<section name="Banking">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Banking\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Banking\javadoc.xml"/>
+			</section>
+			<section name="W13RegexProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W13RegexProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W13RegexProject\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman8">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman8\javadoc.xml"/>
+			</section>
+			<section name="Testing">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Testing\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Testing\javadoc.xml"/>
+			</section>
+			<section name="People">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\People\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\People\javadoc.xml"/>
+			</section>
+			<section name="HW6_Simple 21">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW6_Simple 21\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW6_Simple 21\javadoc.xml"/>
+			</section>
+			<section name="Classroom">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Classroom\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Classroom\javadoc.xml"/>
+			</section>
+			<section name="FractionOthers">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\FractionOthers\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\FractionOthers\javadoc.xml"/>
+			</section>
+			<section name="Cars">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Cars\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Cars\javadoc.xml"/>
+			</section>
+			<section name="Investment">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Investment\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Investment\javadoc.xml"/>
+			</section>
+			<section name="HW7BattleSHip">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\Desktop\docs"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW7BattleSHip\javadoc.xml"/>
+			</section>
+			<section name="W10DogExtendsAnimal">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W10DogExtendsAnimal\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W10DogExtendsAnimal\javadoc.xml"/>
+			</section>
+			<section name="W13Practice">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W13Practice\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W13Practice\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman2">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman2\javadoc.xml"/>
+			</section>
+			<section name="CounterProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\CounterProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\CounterProject\javadoc.xml"/>
+			</section>
+			<section name="FractionSamples">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\FractionSamples\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\FractionSamples\javadoc.xml"/>
+			</section>
+			<section name="battle">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\battle\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\battle\javadoc.xml"/>
+			</section>
+			<section name="Training">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Training\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Training\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman3">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman3\javadoc.xml"/>
+			</section>
+			<section name="Week9PointClassMultiConstructors">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Week9PointClassMultiConstructors\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Week9PointClassMultiConstructors\javadoc.xml"/>
+			</section>
+			<section name="simple_21_7">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\simple_21_7\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\simple_21_7\javadoc.xml"/>
+			</section>
+			<section name="simple21_6">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\simple21_6\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\simple21_6\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman4">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman4\javadoc.xml"/>
+			</section>
+			<section name="W13collections">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W13collections\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W13collections\javadoc.xml"/>
+			</section>
+			<section name="MyFirstjavaProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\MyFirstjavaProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\MyFirstjavaProject\javadoc.xml"/>
+			</section>
+			<section name="W11ShapeInterfaceProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W11ShapeInterfaceProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W11ShapeInterfaceProject\javadoc.xml"/>
+			</section>
+			<section name="CustomerClassProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\CustomerClassProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\CustomerClassProject\javadoc.xml"/>
+			</section>
+			<section name="Week9 StatisMethodsPolymorphism">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\Week9 StatisMethodsPolymorphism\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\Week9 StatisMethodsPolymorphism\javadoc.xml"/>
+			</section>
+			<section name="W10Fractions">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W10Fractions\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W10Fractions\javadoc.xml"/>
+			</section>
+			<section name="HW7BAttleBrandon">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW7BAttleBrandon\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW7BAttleBrandon\javadoc.xml"/>
+			</section>
+			<section name="W11Transportation">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W11Transportation\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W11Transportation\javadoc.xml"/>
+			</section>
+			<section name="W12FileIO">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W12FileIO\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W12FileIO\javadoc.xml"/>
+			</section>
+			<section name="W10AnimalsManagementProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W10AnimalsManagementProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W10AnimalsManagementProject\javadoc.xml"/>
+			</section>
+			<section name="HW8Hangman5">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HW8Hangman\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HW8Hangman5\javadoc.xml"/>
+			</section>
+			<section name="HangmanOthers">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\HangmanOthers\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\HangmanOthers\javadoc.xml"/>
+			</section>
+			<section name="zendesk">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\Documents\others_zen\zendesk\doc"/>
+				<item key="antpath" value="C:\Users\meh\Documents\others_zen\zendesk\javadoc.xml"/>
+			</section>
+			<section name="W11AbstractPetProject">
+				<item key="href" value=""/>
+				<item key="destdir" value="C:\Users\meh\eclipse-workspace\W11AbstractPetProject\doc"/>
+				<item key="antpath" value="C:\Users\meh\eclipse-workspace\W11AbstractPetProject\javadoc.xml"/>
+			</section>
 		</section>
+	</section>
+	<section name="SelfEncapsulateFieldWizard">
+		<item key="GenerateJavadoc" value="false"/>
 	</section>
 </section>

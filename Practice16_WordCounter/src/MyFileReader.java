@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -42,33 +43,44 @@ public class MyFileReader {
 	 *         line
 	 * @throws IOException
 	 */
-	public ArrayList<String> getCleanContent() {
+	public ArrayList<String> getCleanContent() throws IOException {
 
-		// TODO Implement method
 		ArrayList<String> lines = new ArrayList<String>();
 
+		// TODO Implement method
+		// create file object
+		File file = new File(filename);
+
+		// create file reader
+		FileReader fileReader = null;
+		// create buffer reader
+		BufferedReader bufferedReader = null;
+		String line = "";
 		try {
-			BufferedReader file = new BufferedReader(new FileReader(filename));
+			fileReader = new FileReader(file);
+			bufferedReader = new BufferedReader(fileReader);
 
-			String line = file.readLine();
-			while (line != null) {
+			while ((line = bufferedReader.readLine()) != null) {
 				// trim whitespaces
-				line = line.trim();
+				// line = line.trim();
 
-				if (!line.isEmpty()) {
-					lines.add(line);
+				if ((line.trim().isEmpty())) {
+					continue;
 				}
-
-				line = file.readLine();
+				lines.add(line.trim());
 			}
-			file.close();
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("Sorry " + file.getName() + " not found");
 		}
 
 		catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			fileReader.close();
+			bufferedReader.close();
 		}
+
+		// return new ArrayList<String>(lines);
 		return lines;
 	}
 }

@@ -113,8 +113,8 @@ public class InfoProcessor {
 
 		// TODO Implement method
 		for (int i = 0; i < this.lines.size(); i++) {
-			if (this.lines.get(i).contentEquals(str)) {
-				return lines.get(i = 1);
+			if (this.lines.get(i).equals(str)) {
+				return lines.get(i + 1);
 			}
 		}
 

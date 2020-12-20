@@ -2,6 +2,7 @@ package Test1;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import java.io.OutputStreamWriter;
 
 public class FileWriter1 {
 
@@ -9,15 +10,16 @@ public class FileWriter1 {
 		FileWriter fw = new FileWriter("file.dat");
 		String strs[] = { "com", "exe", "doc" };
 
-		BufferedWriter outputWriter = null;
-		outputWriter = new BufferedWriter(fw);
+		BufferedWriter outputWriter = new BufferedWriter(new OutputStreamWriter(System.out));
+		// BufferedWriter outputWriter = null;
+		// outputWriter = new BufferedWriter(fw);
 		for (int i = 0; i < strs.length; i++) {
 			// Maybe:
 			outputWriter.write(strs[i] + "");
-			outputWriter.write(" ");
+			// outputWriter.write(" ");
 			// Or:
 			// outputWriter.write(Integer.toString(strs[i]);
-			// outputWriter.newLine();
+			outputWriter.newLine();
 		}
 		outputWriter.flush();
 		outputWriter.close();

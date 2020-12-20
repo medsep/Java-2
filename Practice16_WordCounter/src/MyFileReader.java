@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -43,44 +42,77 @@ public class MyFileReader {
 	 *         line
 	 * @throws IOException
 	 */
-	public ArrayList<String> getCleanContent() throws IOException {
-
+	public ArrayList<String> getCleanContent() {
 		ArrayList<String> lines = new ArrayList<String>();
 
-		// TODO Implement method
-		// create file object
-		File file = new File(filename);
-
-		// create file reader
-		FileReader fileReader = null;
-		// create buffer reader
-		BufferedReader bufferedReader = null;
-		String line = "";
 		try {
-			fileReader = new FileReader(file);
-			bufferedReader = new BufferedReader(fileReader);
+			BufferedReader file = new BufferedReader(new FileReader(filename));
 
-			while ((line = bufferedReader.readLine()) != null) {
-				// trim whitespaces
-				// line = line.trim();
+			String line = file.readLine();
 
-				if ((line.trim().isEmpty())) {
-					continue;
+			while (line != null) {
+
+				line = line.trim();
+
+				if (!line.isEmpty()) {
+					lines.add(line);
 				}
-				lines.add(line.trim());
+
+				line = file.readLine();
 			}
+
+			file.close();
+
 		} catch (FileNotFoundException e) {
-			System.out.println("Sorry " + file.getName() + " not found");
+			e.printStackTrace();
 		}
 
 		catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			fileReader.close();
-			bufferedReader.close();
 		}
 
-		// return new ArrayList<String>(lines);
 		return lines;
 	}
+
+	// ArrayList<String> lines = new ArrayList<String>();
+
+	// TODO Implement method
+	// create file object
+	// File file = new File(filename);
+
+	// create file reader
+	// FileReader fileReader = null;
+	// create buffer reader
+	// BufferedReader br = null;
+	// String line = "";
+	// try {
+	// fileReader = new FileReader(file);
+	// br = new BufferedReader(fileReader);
+
+	// while ((line = bufferedReader.readLine()) != null) {
+	// trim whitespaces
+	// String[] numStringArray = line.trim().split("\\s+");
+//
+	// while ((line = br.readLine()) != null) {
+	// line = line.trim();
+	// lines.add(line);
+
+	// line = line.trim();
+
+	// if ((line.trim().isEmpty())) {
+	// continue;
+	// }
+	// lines.add(line.trim());
 }
+// } catch (FileNotFoundException e) {
+// System.out.println("Sorry " + file.getName() + " not found");
+// }
+
+// catch (IOException e) {
+// e.printStackTrace();
+// }
+
+// return new ArrayList<String>(lines);
+// return lines;
+// }
+//}

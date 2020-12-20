@@ -176,6 +176,13 @@ public class Expenses {
 		// Hint: Iterate over each month and get the total expenses for each
 		// Then determine the greatest
 
+		// List<String> keys = new ArrayList<>();
+		/// for (Entry<String, Integer> entry : map.entrySet()) {
+		// if (entry.getValue()==max) {
+		// keys.add(entry.getKey());
+		// }
+		// }
+
 		Set<String> months = this.monthlyMappings.keySet();
 
 		int intMonth = 0;

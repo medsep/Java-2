@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Counts words in a given list of lines from a file.
@@ -88,7 +90,7 @@ public class WordCounter {
 	}
 
 	public Map<String, Integer> getWordCount() {
-		return wordCount;
+		return this.wordCount;
 	}
 
 	/**
@@ -133,6 +135,15 @@ public class WordCounter {
 	public ArrayList<String> getWordsOccuringMoreThan(int threshold) {
 		ArrayList<String> result = new ArrayList<String>();
 
+		Iterator wordCountIterator = this.wordCount.entrySet().iterator();
+
+		for (Entry<String, Integer> key : this.wordCount.entrySet()) {
+			int value = key.getValue();
+			if (value >= threshold) {
+				result.add(key.getKey());
+			}
+
+		}
 		return result;
 	}
 }

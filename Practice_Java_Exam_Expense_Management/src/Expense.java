@@ -65,7 +65,7 @@ public class Expense {
 	@Override
 	public boolean equals(Object o) {
 		// TODO Implement method
-		Double delta = 0.000001;
+		// Double delta = 0.000001;
 		Expense otherExpense = (Expense) o;
 
 		// if (this.month == otherExpense.month) {

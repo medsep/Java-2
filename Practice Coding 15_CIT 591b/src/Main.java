@@ -62,6 +62,9 @@ public class Main {
 		 */
 		int studentID = ip.getStudentId();
 
+		// System.out.print(ip.getCourseId());
+		// System.out.print(ip.getStudentId());
+
 		/*
 		 * Format the lines to be written
 		 */

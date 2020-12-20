@@ -61,8 +61,9 @@ public class InfoProcessor {
 	public int getCourseId() {
 
 		// TODO Implement method
-
-		return Integer.parseInt(getNextStringStartsWith("CourseID:"));
+		int courseId = Integer.parseInt(getNextStringStartsWith("Course_ID:"));
+		// return
+		return courseId;
 	}
 
 	/**
@@ -86,7 +87,8 @@ public class InfoProcessor {
 
 		// TODO Implement method
 
-		return Integer.parseInt(getNextStringStartsWith("StudentID:"));
+		int studentId = Integer.parseInt(getNextStringStartsWith("Student_ID:"));
+		return studentId;
 	}
 
 	/**

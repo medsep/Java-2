@@ -1,6 +1,8 @@
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
@@ -34,7 +36,7 @@ public class MyFileWriter {
 	 * 
 	 * @param list of words to write to the file
 	 */
-	public void writeToFile(ArrayList<String> words) +-{
+	public void writeToFile(ArrayList<String> words) {
 
 		// TODO Implement method
 		File file = new File(filename);
@@ -42,6 +44,9 @@ public class MyFileWriter {
 		// defile file and pribtWriter
 		FileWriter fileWriter = null;
 		PrintWriter printWriter = null;
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		;
+		// String[] words = nodeValue.split(" ");
 		try {
 			fileWriter = new FileWriter(file);
 			printWriter = new PrintWriter(fileWriter);
@@ -49,8 +54,11 @@ public class MyFileWriter {
 			// iterate over arraylist of values and write each to the file
 			for (String line : words) {
 				// Maybe:
-				printWriter.write(line + "");
-				printWriter.write(" ");
+				fileWriter.write(line + System.lineSeparator());
+				// bw.write(line);
+				// bw.newLine();
+				// printWriter.write(line);
+				// printWriter.write("");
 				// Or:
 				// outputWriter.write(Integer.toString(strs[i]);
 				// outputWriter.newLine();
@@ -67,6 +75,7 @@ public class MyFileWriter {
 			try {
 				fileWriter.close();
 				printWriter.close();
+				bw.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -17,7 +17,7 @@ public class Main {
 
 		// Get clean lines from the file
 		ArrayList<String> lines = fr.getCleanContent();
-
+		System.out.println(lines);
 		// Create new Word Counter with the clean lines
 		WordCounter wc = new WordCounter(lines);
 
@@ -31,7 +31,7 @@ public class Main {
 		System.out.println(counters.get("in"));
 
 		// Get the words repeated 5000 times or more
-		ArrayList<String> words = wc.getWordsOccuringMoreThan(500);
+		ArrayList<String> words = wc.getWordsOccuringMoreThan(5000);
 
 		// Write the words to a file
 		fw.writeToFile(words);

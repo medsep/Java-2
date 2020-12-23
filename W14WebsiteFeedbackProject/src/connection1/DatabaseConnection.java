@@ -44,7 +44,7 @@ public class DatabaseConnection {
 			preparedStatement.setString(1, "Test");
 			preparedStatement.setString(2, "TestEmail");
 			preparedStatement.setString(3, "TestWebpage");
-			preparedStatement.setDate(4, new java.sql.Date(2009, 12, 11));
+			preparedStatement.setDate(4, new java.sql.Date(2009));
 			preparedStatement.setString(5, "TestSummary");
 			preparedStatement.setString(6, "TestComment");
 			preparedStatement.executeUpdate();
@@ -55,7 +55,7 @@ public class DatabaseConnection {
 			writeResultSet(resultSet);
 
 			// Remove again the insert comment
-			preparedStatement = connect.prepareStatement("delete from feedback.comments where myuser= ? ; ");
+			preparedStatement = connect.prepareStatement("delete from feedback.comments where my_user= ? ; ");
 			preparedStatement.setString(1, "Test");
 			preparedStatement.executeUpdate();
 

@@ -23,4 +23,5 @@
     <fullyQualifiedTypeName name="java.util.regex.Matcher"/>
     <fullyQualifiedTypeName name="com.inventory.InventoryManager"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
 </qualifiedTypeNameHistroy>

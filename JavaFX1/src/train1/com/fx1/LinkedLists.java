@@ -1,5 +1,14 @@
 package train1.com.fx1;
 
+/**
+ * linked list
+ * 1- better element insertion as it maintains 2 pointers right before and after the element
+ * 2- ArrayList search is faster. In LinkedList you need to ieterate over the list
+ * 3- LinkedList eleemnt deletion is faster
+ * 4- LinkedList has more memory than ArrayList. This means that In Arraylist the index only holds 
+ * the object but in LinkedList each nodes holds the data and address. 
+ */
+
 import java.util.LinkedList;
 
 public class LinkedLists {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="NewWizardAction">
-		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.springsource.ide.eclipse.commons.gettingstarted.wizard.boot.NewSpringBootWizard"/>
+		<item key="NewWizardSelectionPage.STORE_SELECTED_ID" value="org.eclipse.jdt.ui.wizards.JavaProjectWizard"/>
 		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
 			<item value="org.eclipse.jdt.ui.java"/>
 			<item value="org.springsource.ide.eclipse.boot.wizards.category"/>
@@ -13,6 +13,9 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\eclipse-workspace\SpringDemo1\src\main\java\com\example\demo"/>
+			<item value="D:\eclipse-workspace\SpringDemo1"/>
+			<item value="D:\eclipse-workspace\spring"/>
 			<item value="C:\Users\meh\Documents\others_zen\zendesk"/>
 			<item value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W11\Practice-Coding-13_CIT-591b\transportation"/>
 			<item value="C:\Users\meh\Downloads\Penn\CIT 591 Introduction to Software Development\W7\HW6_Simple-21"/>

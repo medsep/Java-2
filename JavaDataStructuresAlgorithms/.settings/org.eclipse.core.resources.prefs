@@ -1,0 +1,16 @@
+eclipse.preferences.version=1
+encoding//src/com/Chapter2/ArithmeticProgression.java=UTF-8
+encoding//src/com/Chapter2/FibonacciProgression.java=UTF-8
+encoding//src/com/Chapter2/GeometricProgression.java=UTF-8
+encoding//src/com/Chapter2/Interfaces/BoxedItem.java=UTF-8
+encoding//src/com/Chapter2/Interfaces/Sellable.java=UTF-8
+encoding//src/com/Chapter2/Interfaces/Transportable.java=UTF-8
+encoding//src/com/Chapter2/Progression.java=UTF-8
+encoding//src/com/Chapter2/TestProgression.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/ArrayTest.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/CaesarCipher.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/CircularlyLinkedList.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/GameEntry.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/InsertionSort.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/Scoreboard.java=UTF-8
+encoding//src/com/Chapter3/DataStructures/TicTacToe.java=UTF-8

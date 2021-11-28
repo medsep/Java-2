@@ -4,7 +4,7 @@ public class finally_block {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// final int x = 1000;
+		// algorithmdbbcfinal int x = 1000;
 
 		try {
 
